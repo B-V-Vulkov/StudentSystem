@@ -7,6 +7,21 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button Width="100"
+                    Height="100"
+                    Background="#0582B4"
+                    Click="Test">
+            </Button>
+        </StackPanel>
+
+        <Frame x:Name="frame" Grid.Column="1">
+        </Frame>
+        
     </Grid>
 </UserControl>

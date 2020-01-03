@@ -5,10 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentSystem"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
 
-        
-    </Grid>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"
+                      ResizeBorderThickness="8">
+        </WindowChrome>
+    </WindowChrome.WindowChrome>
+
+    <Border BorderBrush="{StaticResource PrimaryBorder}"
+            BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Window Chrome-->
+            <Grid Background="{StaticResource PrimaryDarkBackgrounds}" 
+                  Height="30"
+                  Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Icon-->
+
+                <!--Title-->
+                <TextBlock Grid.Column="1" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Text="StudentSystem"
+                           Foreground="{StaticResource LightText}">
+                </TextBlock>
+
+                <!--Window Command Buttons-->
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Right"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button x:Name="MinimizedWindow"
+                            Style="{StaticResource WindowButton}"
+                            Command="{Binding Path=MinimizedCommand}"
+                            Content="―" FontWeight="Bold">
+                    </Button>
+                    <Button x:Name="MaximizedWindow"
+                            Style="{StaticResource WindowButton}"
+                            Command="{Binding Path=MaximizedCommand}"
+                            Content="▭" FontWeight="Bold">
+                    </Button>
+                    <Button x:Name="CloseWindow"
+                            Style="{StaticResource CloseButton}"
+                            Command="{Binding Path=CloseCommand}"
+                            Content="X">
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!--Main Content-->
+            <Frame Grid.Row="1"
+                   Source="Views/NavigationView.xaml">
+            </Frame>
+        </Grid>
+    </Border>
 </Window>

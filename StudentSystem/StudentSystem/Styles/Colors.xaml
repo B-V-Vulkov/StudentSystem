@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Backgrounds-->
+    <SolidColorBrush x:Key="PrimaryBackgrounds">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryLightBackgrounds">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryDarkBackgrounds">#2D2D30</SolidColorBrush>
+
+    <SolidColorBrush x:Key="SecondaryBackgrounds">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryLightBackgrounds">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryDarkBackgrounds">Red</SolidColorBrush>
+
+    <!--Borders-->
+    <SolidColorBrush x:Key="PrimaryBorder">#24292E</SolidColorBrush>
+
+    <!--Texts-->
+    <SolidColorBrush x:Key="LightText">#9E9E9E</SolidColorBrush>
+
+</ResourceDictionary>
