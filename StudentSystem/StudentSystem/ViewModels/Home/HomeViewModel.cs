@@ -46,9 +46,9 @@
 
         private string GetCurrentViewSource()
         {
-            if (!UserState.IsSignedIn)
+            if (!UserState.IsLogin)
             {
-                return ViewSource.SIGN_IN_VIEW_SOURCE;
+                return ViewSource.LOGIN_VIEW_SOURCE;
             }
 
             string source = string.Empty;

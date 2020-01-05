@@ -4,7 +4,7 @@
     {
         #region Declarations
 
-        private static bool isSignedIn = false;
+        private static bool isLogin = false;
 
         private static UserType userType = UserType.Indefinite;
 
@@ -17,15 +17,15 @@
 
         #region Properties
 
-        public static bool IsSignedIn
+        public static bool IsLogin
         {
             get
             {
-                return isSignedIn;
+                return isLogin;
             }
             private set
             {
-                isSignedIn = value;
+                isLogin = value;
             }
         }
 
@@ -45,15 +45,15 @@
 
         #region Methods
 
-        public static void SignUp()
+        public static void Logout()
         {
-            IsSignedIn = false;
+            IsLogin = false;
             UserStateChanged?.Invoke();
         }
 
-        public static void SignIn(UserType type)
+        public static void Login(UserType type)
         {
-            IsSignedIn = true;
+            IsLogin = true;
             userType = type;
             UserStateChanged?.Invoke();
         }

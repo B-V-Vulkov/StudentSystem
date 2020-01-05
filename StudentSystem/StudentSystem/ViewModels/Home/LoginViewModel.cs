@@ -1,8 +1,9 @@
 ﻿namespace StudentSystem.ViewModels.Home
 {
     using Prism.Commands;
+    using StudentSystem.Services.Services;
 
-    public class SignInViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         #region Declarations
 
@@ -12,9 +13,17 @@
 
         private DelegateCommand signInCommand;
 
+        private UserService service;
+
         #endregion
 
         #region Initializations
+
+        public LoginViewModel()
+        {
+            this.service = new UserService();
+        }
+
         #endregion
 
         #region Properties
@@ -51,7 +60,7 @@
             {
                 if (this.signInCommand == null)
                 {
-                    this.signInCommand = new DelegateCommand(SignIn);
+                    this.signInCommand = new DelegateCommand(Login);
                 }
 
                 return this.signInCommand;
@@ -62,9 +71,9 @@
 
         #region Methods
 
-        //TODO
-        private void SignIn()
+        private void Login()
         {
+            var user = service.GetUser(this.UserName, this.Password);
         }
 
         #endregion

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Background\Background.png" />
     <None Remove="Resources\ButtonIcons\Courses.png" />
     <None Remove="Resources\ButtonIcons\Home.png" />
     <None Remove="Resources\ButtonIcons\Students.png" />
@@ -23,6 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StudentSystem.Services\StudentSystem.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Background\Background.png" />
     <Resource Include="Resources\ButtonIcons\Courses.png" />
     <Resource Include="Resources\ButtonIcons\Home.png" />
     <Resource Include="Resources\ButtonIcons\Students.png" />

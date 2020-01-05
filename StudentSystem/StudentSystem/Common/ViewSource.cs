@@ -6,7 +6,7 @@
     {
         public const string EMPTY_VIEW_SOURCE = "../EmptyView.xaml";
 
-        public const string SIGN_IN_VIEW_SOURCE = "../Home/SignInView.xaml";
+        public const string LOGIN_VIEW_SOURCE = "../Home/LoginView.xaml";
 
         public const string TEACHER_PROFILE_VIEW_SOURCE = "TeacherProfileView.xaml";
 
