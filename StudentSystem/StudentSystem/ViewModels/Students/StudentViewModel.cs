@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.ViewModels
+﻿namespace StudentSystem.ViewModels.Students
 {
     public class StudentViewModel
     {

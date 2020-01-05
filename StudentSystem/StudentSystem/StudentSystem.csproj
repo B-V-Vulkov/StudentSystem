@@ -7,12 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\ButtonIcons\Courses.png" />
+    <None Remove="Resources\ButtonIcons\Home.png" />
+    <None Remove="Resources\ButtonIcons\Students.png" />
+    <None Remove="Resources\ButtonIcons\Teachers.png" />
+    <None Remove="Resources\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Prism.Core" Version="7.2.0.1422" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\ButtonIcons\Courses.png" />
+    <Resource Include="Resources\ButtonIcons\Home.png" />
+    <Resource Include="Resources\ButtonIcons\Students.png" />
+    <Resource Include="Resources\ButtonIcons\Teachers.png" />
+    <Resource Include="Resources\StudentsIcons\Students.png" />
   </ItemGroup>
 
 </Project>

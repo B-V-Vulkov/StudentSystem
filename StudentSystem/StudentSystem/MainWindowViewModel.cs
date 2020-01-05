@@ -1,7 +1,10 @@
 ﻿namespace StudentSystem
 {
+    using System;
     using System.Windows;
     using Prism.Commands;
+
+    using Common;
 
     public class MainWindowViewModel
     {
@@ -9,14 +12,9 @@
 
         private Window window;
 
-        private DelegateCommand minimizedCommand;
-
-        private DelegateCommand maximizedCommand;
-
-        private DelegateCommand closeCommand;
+        private DelegateCommand<string> changeWindowStateCommand;
 
         #endregion
-
         #region Initializations
 
         public MainWindowViewModel(Window window)
@@ -31,42 +29,16 @@
 
         #region Properties
 
-        public DelegateCommand MinimizedCommand
+        public DelegateCommand<string> ChangeWindowStateCommand
         {
             get
             {
-                if (this.minimizedCommand == null)
+                if (this.changeWindowStateCommand == null)
                 {
-                    this.minimizedCommand = new DelegateCommand(MinimizedWindow);
+                    this.changeWindowStateCommand = new DelegateCommand<string>(ChangeWindowState);
                 }
 
-                return this.minimizedCommand;
-            }
-        }
-
-        public DelegateCommand MaximizedCommand
-        {
-            get
-            {
-                if (this.maximizedCommand == null)
-                {
-                    this.maximizedCommand = new DelegateCommand(MaximizedWindow);
-                }
-
-                return this.maximizedCommand;
-            }
-        }
-
-        public DelegateCommand CloseCommand
-        {
-            get
-            {
-                if (this.closeCommand == null)
-                {
-                    this.closeCommand = new DelegateCommand(CloseWindow);
-                }
-
-                return this.closeCommand;
+                return this.changeWindowStateCommand;
             }
         }
 
@@ -74,19 +46,31 @@
 
         #region Methods
 
-        private void MinimizedWindow()
+        private void ChangeWindowState(string command)
         {
-            this.window.WindowState = WindowState.Minimized;
-        }
-
-        private void MaximizedWindow()
-        {
-            this.window.WindowState = WindowState.Maximized;
-        }
-
-        private void CloseWindow()
-        {
-            this.window.Close();
+            if (command == WindowCommand.Minimize.ToString())
+            {
+                this.window.WindowState = WindowState.Minimized;
+            }
+            else if (command == WindowCommand.Maximize.ToString())
+            {
+                if (this.window.WindowState == WindowState.Maximized)
+                {
+                    this.window.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    this.window.WindowState = WindowState.Maximized;
+                }
+            }
+            else if (command == WindowCommand.Close.ToString())
+            {
+                this.window.Close();
+            }
+            else
+            {
+                throw new InvalidOperationException(ExceptionMessage.INVALID_WINDOW_COMMAND_EXCEPTION);
+            }
         }
 
         #endregion

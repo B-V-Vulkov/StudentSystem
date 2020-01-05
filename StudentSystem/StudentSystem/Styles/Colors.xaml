@@ -2,18 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!--Backgrounds-->
-    <SolidColorBrush x:Key="PrimaryBackgrounds">Red</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryLightBackgrounds">Red</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryDarkBackgrounds">#2D2D30</SolidColorBrush>
-
-    <SolidColorBrush x:Key="SecondaryBackgrounds">Red</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryLightBackgrounds">Red</SolidColorBrush>
-    <SolidColorBrush x:Key="SecondaryDarkBackgrounds">Red</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryDarkBackgrounds">#24292E</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryLightBackgrounds">#F6F8FA</SolidColorBrush>
 
     <!--Borders-->
-    <SolidColorBrush x:Key="PrimaryBorder">#24292E</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryDarkBorder">#24292E</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryLightBorder">#9E9E9E</SolidColorBrush>
+
+    <!--Buttons-->
+    <SolidColorBrush x:Key="WindowCommandButtonMouseOver">#3F3F41</SolidColorBrush>
+    <SolidColorBrush x:Key="CloseWindowMouseOver">#8B0000</SolidColorBrush>
 
     <!--Texts-->
-    <SolidColorBrush x:Key="LightText">#9E9E9E</SolidColorBrush>
+    <SolidColorBrush x:Key="LightText">#eeeeee</SolidColorBrush>
+    <SolidColorBrush x:Key="NavigationButtonText">#0283B3</SolidColorBrush>
 
 </ResourceDictionary>

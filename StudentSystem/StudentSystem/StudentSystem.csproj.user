@@ -7,16 +7,28 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\NavigationView.xaml.cs">
+    <Compile Update="Views\Courses\CoursesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StudentView.xaml.cs">
+    <Compile Update="Views\EmptyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\TeacherStudentView.xaml.cs">
+    <Compile Update="Views\Home\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\TeacherView.xaml.cs">
+    <Compile Update="Views\Home\SignInView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Home\TeacherProfileView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Navigation\NavigationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Students\StudentsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Teachers\TeachersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -30,16 +42,31 @@
     <Page Update="Styles\Colors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\NavigationView.xaml">
+    <Page Update="Styles\Images.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\StudentView.xaml">
+    <Page Update="Views\Courses\CoursesView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\TeacherStudentView.xaml">
+    <Page Update="Views\EmptyView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\TeacherView.xaml">
+    <Page Update="Views\Home\HomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Home\SignInView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Home\TeacherProfileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Navigation\NavigationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Students\StudentsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Teachers\TeachersView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
