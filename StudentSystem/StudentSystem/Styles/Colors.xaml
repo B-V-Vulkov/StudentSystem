@@ -4,6 +4,7 @@
     <!--Backgrounds-->
     <SolidColorBrush x:Key="PrimaryDarkBackgrounds">#24292E</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryLightBackgrounds">#F6F8FA</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryDarkBackgrounds">#8024292E</SolidColorBrush>
 
     <!--Borders-->
     <SolidColorBrush x:Key="PrimaryDarkBorder">#24292E</SolidColorBrush>
