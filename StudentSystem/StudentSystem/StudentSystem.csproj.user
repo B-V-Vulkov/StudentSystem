@@ -19,6 +19,9 @@
     <Compile Update="Views\Home\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Home\StudentProfileView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Home\TeacherProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -36,6 +39,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Styles\Borders.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Styles\Buttons.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -43,6 +49,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\Images.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBlocks.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBoxes.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Courses\CoursesView.xaml">
@@ -55,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Home\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Home\StudentProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Home\TeacherProfileView.xaml">

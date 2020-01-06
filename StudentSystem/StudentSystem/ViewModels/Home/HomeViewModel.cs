@@ -15,7 +15,7 @@
         public HomeViewModel()
         {
             this.CurrentViewSource = GetCurrentViewSource();
-            UserState.UserStateChanged += RefreshView;
+            User.UserStateChanged += RefreshView;
         }
 
         #endregion
@@ -46,16 +46,16 @@
 
         private string GetCurrentViewSource()
         {
-            if (!UserState.IsLogin)
+            if (!User.IsLogin)
             {
                 return ViewSource.LOGIN_VIEW_SOURCE;
             }
 
             string source = string.Empty;
 
-            if (UserState.UserType == UserType.Teacher)
+            if (User.UserType == UserType.Student)
             {
-                source = ViewSource.TEACHER_PROFILE_VIEW_SOURCE;
+                source = ViewSource.STUDENT_PROFILE_VIEW_SOURCE;
             }
 
             return source;

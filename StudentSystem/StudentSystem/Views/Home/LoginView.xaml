@@ -17,10 +17,44 @@
                 CornerRadius="10"
                 Background="{StaticResource SecondaryDarkBackgrounds}">
             <StackPanel>
-                <TextBlock Text="Login"
-                       HorizontalAlignment="Center"
-                       Foreground="{StaticResource LightText}"
-                       FontSize="30"/>
+                <TextBlock HorizontalAlignment="Center"
+                           Foreground="{StaticResource LightText}"
+                           FontSize="30"
+                           Margin="0 30 0 20"
+                           Text="Member Login">
+                </TextBlock>
+                <!--User Name-->
+                <TextBlock Text="User Name"
+                           Margin="40 10 40 0"
+                           FontSize="12"
+                           Foreground="{StaticResource LightText}"></TextBlock>
+                <Border Style="{StaticResource LoginTextBorder}"
+                        Margin="40 0">
+                    <TextBox x:Name="UserName"
+                             Text="{Binding Path=UserName}"
+                             Style="{StaticResource LoginTextBox}">
+                    </TextBox>
+                </Border>
+                <!--Password-->
+                <TextBlock Text="Password"
+                           Margin="40 10 40 0"
+                           FontSize="12"
+                           Foreground="{StaticResource LightText}"></TextBlock>
+                <Border Style="{StaticResource LoginTextBorder}"
+                        Margin="40 0">
+                    <TextBox x:Name="Password"
+                             Text="{Binding Path=Password}"
+                             Style="{StaticResource LoginTextBox}">
+                    </TextBox>
+                </Border>
+                <!--Login Button-->
+                <Button x:Name="LoginButton"
+                        Command="{Binding Path=LoginCommand}"
+                        Margin="25"
+                        Width="220"
+                        Style="{StaticResource LoginButton}"
+                        Content="Login">
+                </Button>
             </StackPanel>
         </Border>
     </Grid>

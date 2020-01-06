@@ -1,6 +1,6 @@
 ﻿namespace StudentSystem.Common
 {
-    public static class UserState
+    public static class User
     {
         #region Declarations
 

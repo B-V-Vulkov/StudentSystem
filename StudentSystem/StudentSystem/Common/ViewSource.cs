@@ -10,6 +10,8 @@
 
         public const string TEACHER_PROFILE_VIEW_SOURCE = "TeacherProfileView.xaml";
 
+        public const string STUDENT_PROFILE_VIEW_SOURCE = "StudentProfileView.xaml";
+
         public const string HOME_VIEW = "HomeView";
 
         public static Dictionary<string, string> views = new Dictionary<string, string>()

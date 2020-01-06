@@ -1,6 +1,7 @@
 ﻿namespace StudentSystem.ViewModels.Home
 {
     using Prism.Commands;
+    using StudentSystem.Common;
     using StudentSystem.Services.Services;
 
     public class LoginViewModel : BaseViewModel
@@ -11,7 +12,7 @@
 
         private string password;
 
-        private DelegateCommand signInCommand;
+        private DelegateCommand loginCommand;
 
         private UserService service;
 
@@ -54,16 +55,16 @@
             }
         }
 
-        public DelegateCommand SignInCommand
+        public DelegateCommand LoginCommand
         {
             get
             {
-                if (this.signInCommand == null)
+                if (this.loginCommand == null)
                 {
-                    this.signInCommand = new DelegateCommand(Login);
+                    this.loginCommand = new DelegateCommand(Login);
                 }
 
-                return this.signInCommand;
+                return this.loginCommand;
             }
         }
 
@@ -73,7 +74,12 @@
 
         private void Login()
         {
-            var user = service.GetUser(this.UserName, this.Password);
+            User.Login(UserType.Student);
+
+
+
+
+
         }
 
         #endregion

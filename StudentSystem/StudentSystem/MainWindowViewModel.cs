@@ -15,6 +15,7 @@
         private DelegateCommand<string> changeWindowStateCommand;
 
         #endregion
+
         #region Initializations
 
         public MainWindowViewModel(Window window)

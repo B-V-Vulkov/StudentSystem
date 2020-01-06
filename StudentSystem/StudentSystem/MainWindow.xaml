@@ -34,8 +34,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Title-->
-                    <TextBlock x:Name="Title"
-                               Grid.Column="0"
+                    <TextBlock Grid.Column="0"
                                VerticalAlignment="Center" 
                                HorizontalAlignment="Center"
                                Foreground="{StaticResource LightText}"

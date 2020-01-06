@@ -4,12 +4,12 @@
 
     using ViewModels.Home;
 
-    public partial class LoginView : UserControl
+    public partial class StudentProfileView : UserControl
     {
-        public LoginView()
+        public StudentProfileView()
         {
             InitializeComponent();
-            this.DataContext = new LoginViewModel();
+            this.DataContext = new StudentProfileViewModel();
         }
     }
 }

@@ -6,7 +6,7 @@
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
-    
+
     <!--Window Control Buttons-->
     <Style x:Key="WindowButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Width" Value="50"></Setter>
@@ -19,22 +19,23 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource WindowCommandButtonMouseOver}"></Setter>
+                <Setter Property="Background" Value="{StaticResource WindowCommandButtonMouseOver}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <!--Window Close Button-->
     <Style x:Key="CloseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowButton}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource CloseWindowMouseOver}"></Setter>
+                <Setter Property="Background" Value="{StaticResource CloseWindowMouseOver}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -52,14 +53,37 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource PrimaryLightBackgrounds}"></Setter>
+                <Setter Property="Background" Value="{StaticResource PrimaryLightBackgrounds}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Login Button-->
+    <Style x:Key="LoginButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource PrimaryDarkBackgrounds}"/>
+        <Setter Property="Foreground" Value="{StaticResource NavigationButtonText}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="5" 
+                            BorderThickness="0"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryLightBackgrounds}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
