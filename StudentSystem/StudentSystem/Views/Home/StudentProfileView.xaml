@@ -23,36 +23,11 @@
         </Grid>
 
         <!--Courses Table-->
-        <DataGrid Grid.Row="1"
-                  BorderThickness="0"
-                  ItemsSource="{Binding Path=Courses}"
-                  AutoGenerateColumns="False"
-                  CanUserReorderColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Name}"
-                                    Width="200"
-                                    IsReadOnly="True"
-                                    Header="Course" >
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Teacher}"
-                                    Width="200"
-                                    IsReadOnly="True"
-                                    Header="Teacher" >
-                </DataGridTextColumn>
-                <DataGridTextColumn>
-                    <DataGridTextColumn.Header>
-                        <TextBlock Text="DSDS"/>
-                    </DataGridTextColumn.Header>
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-       
-        <!--<ScrollViewer Grid.Row="1"
+        <ScrollViewer Grid.Row="1"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
             <StackPanel>
-                --><!--Table Header--><!--
+                <!--Table Header-->
                 <Grid Background="{StaticResource SecondaryDarkBackgrounds}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
@@ -87,13 +62,16 @@
                            Text="Result">
                     </TextBlock>
                 </Grid>
-                --><!--Table Content--><!--
+                
+                <!--Table Content-->
                 <ItemsControl ItemsSource="{Binding Courses}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel/>
+
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
+
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -136,6 +114,6 @@
 
 
             </StackPanel>
-        </ScrollViewer>-->
+        </ScrollViewer>
     </Grid>
 </UserControl>
