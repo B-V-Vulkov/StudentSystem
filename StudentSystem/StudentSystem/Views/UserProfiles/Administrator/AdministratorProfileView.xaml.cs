@@ -1,5 +1,4 @@
-﻿using StudentSystem.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -12,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StudentSystem.Views.Home
+namespace StudentSystem.Views.UserProfiles.Administrator
 {
     /// <summary>
-    /// Interaction logic for TeacherProfileView.xaml
+    /// Interaction logic for AdministratorProfileView.xaml
     /// </summary>
-    public partial class TeacherProfileView : UserControl
+    public partial class AdministratorProfileView : UserControl
     {
-        public TeacherProfileView()
+        public AdministratorProfileView()
         {
             InitializeComponent();
         }

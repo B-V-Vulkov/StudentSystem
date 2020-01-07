@@ -7,31 +7,28 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Courses\CoursesView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\EmptyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Home\HomeView.xaml.cs">
+    <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Home\LoginView.xaml.cs">
+    <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Home\StudentProfileView.xaml.cs">
+    <Compile Update="Views\NavigationView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Home\TeacherProfileView.xaml.cs">
+    <Compile Update="Views\UserProfiles\Administrator\AdministratorProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Navigation\NavigationView.xaml.cs">
+    <Compile Update="Views\UserProfiles\Student\StudentProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Students\StudentsView.xaml.cs">
+    <Compile Update="Views\UserProfiles\Teacher\TeacherProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Teachers\TeachersView.xaml.cs">
+    <Compile Update="Views\UserProfiles\UserProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -57,31 +54,28 @@
     <Page Update="Styles\TextBoxes.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Courses\CoursesView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\EmptyView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Home\HomeView.xaml">
+    <Page Update="Views\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Home\LoginView.xaml">
+    <Page Update="Views\LoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Home\StudentProfileView.xaml">
+    <Page Update="Views\NavigationView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Home\TeacherProfileView.xaml">
+    <Page Update="Views\UserProfiles\Administrator\AdministratorProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Navigation\NavigationView.xaml">
+    <Page Update="Views\UserProfiles\Student\StudentProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Students\StudentsView.xaml">
+    <Page Update="Views\UserProfiles\Teacher\TeacherProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Teachers\TeachersView.xaml">
+    <Page Update="Views\UserProfiles\UserProfileView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

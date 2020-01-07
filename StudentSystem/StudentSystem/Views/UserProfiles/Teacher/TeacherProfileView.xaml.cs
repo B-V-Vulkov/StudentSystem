@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StudentSystem.Views.Teachers
+namespace StudentSystem.Views.UserProfiles.Teacher
 {
     /// <summary>
-    /// Interaction logic for TeachersView.xaml
+    /// Interaction logic for TeacherProfileView.xaml
     /// </summary>
-    public partial class TeachersView : UserControl
+    public partial class TeacherProfileView : UserControl
     {
-        public TeachersView()
+        public TeacherProfileView()
         {
             InitializeComponent();
         }

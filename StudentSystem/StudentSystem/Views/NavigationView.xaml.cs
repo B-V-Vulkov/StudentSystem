@@ -1,8 +1,8 @@
-﻿namespace StudentSystem.Views.Navigation
+﻿namespace StudentSystem.Views
 {
     using System.Windows.Controls;
 
-    using ViewModels.Navigation;
+    using ViewModels;
 
     public partial class NavigationView : UserControl
     {

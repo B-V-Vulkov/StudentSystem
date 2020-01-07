@@ -1,16 +1,12 @@
-﻿<UserControl x:Class="StudentSystem.Views.Students.StudentsView"
+﻿<UserControl x:Class="StudentSystem.Views.HomeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:StudentSystem.Views.Students"
+             xmlns:local="clr-namespace:StudentSystem.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Gray">
-        <TextBlock VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="30"
-                   Text="StudentsView">
-        </TextBlock>
-    </Grid>
+    <Frame NavigationUIVisibility="Hidden"
+           Source="{Binding Path=CurrentViewSource}">
+    </Frame>
 </UserControl>

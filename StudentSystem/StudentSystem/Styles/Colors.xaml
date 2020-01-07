@@ -13,6 +13,7 @@
 
     <!--Buttons-->
     <SolidColorBrush x:Key="WindowCommandButtonMouseOver">#3F3F41</SolidColorBrush>
+    <SolidColorBrush x:Key="ProfileNavigationButtonMouseOver">#9024292E</SolidColorBrush>
     <SolidColorBrush x:Key="CloseWindowMouseOver">#8B0000</SolidColorBrush>
 
     <!--Texts-->

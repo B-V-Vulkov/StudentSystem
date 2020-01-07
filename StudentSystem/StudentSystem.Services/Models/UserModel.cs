@@ -1,6 +1,6 @@
 ﻿namespace StudentSystem.Services.Models
 {
-    public class User
+    public class UserModel
     {
         public string Name { get; set; }
     }

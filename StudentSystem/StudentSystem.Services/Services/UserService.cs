@@ -6,9 +6,9 @@
 
     public class UserService
     {
-        public User GetUser(string userName, string password)
+        public UserModel GetUser(string userName, string password)
         {
-            return new User();
+            return new UserModel();
         }
 
         public List<StudentCourses> GetCourses()

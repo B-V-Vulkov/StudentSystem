@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.ViewModels.Navigation
+﻿namespace StudentSystem.ViewModels
 {
     using System;
     using Prism.Commands;

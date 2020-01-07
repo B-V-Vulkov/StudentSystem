@@ -1,4 +1,4 @@
-﻿namespace StudentSystem.ViewModels.Home
+﻿namespace StudentSystem.ViewModels
 {
     using StudentSystem.Common;
 
@@ -51,17 +51,9 @@
                 return ViewSource.LOGIN_VIEW_SOURCE;
             }
 
-            string source = string.Empty;
-
-            if (User.UserType == UserType.Student)
-            {
-                source = ViewSource.STUDENT_PROFILE_VIEW_SOURCE;
-            }
-
-            return source;
+            return ViewSource.USER_PROFILE_VIEW_SOURCE;
         }
 
         #endregion
-
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace StudentSystem.Views.Home
+﻿namespace StudentSystem.Views
 {
     using System.Windows.Controls;
 
-    using ViewModels.Home;
+    using ViewModels;
 
     public partial class HomeView : UserControl
     {
