@@ -24,7 +24,7 @@
             <!--Home Button-->
             <Button x:Name="SignInButton"
                     Command="{Binding Path=ChangeViewCommand}"
-                    CommandParameter="HomeView"
+                    CommandParameter="GoToHome"
                     Style="{StaticResource NavigationButton}">
                 <Grid Width="160">
                     <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
             <!--Students Button-->
             <Button x:Name="StdentsButton"
                     Command="{Binding Path=ChangeViewCommand}"
-                    CommandParameter="StudentsView"
+                    CommandParameter="GoToStudents"
                     Style="{StaticResource NavigationButton}">
                 <Grid Width="160">
                     <Grid.ColumnDefinitions>
@@ -110,7 +110,7 @@
                 </Grid>
             </Button>
         </StackPanel>
-
+        
         <Frame Grid.Column="1"
                NavigationUIVisibility="Hidden"
                Source="{Binding CurrentViewSource}">

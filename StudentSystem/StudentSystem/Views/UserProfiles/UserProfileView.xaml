@@ -21,13 +21,28 @@
                     Orientation="Horizontal"
                     Background="{StaticResource SecondaryDarkBackgrounds}">
 
-            <Button Style="{StaticResource ProfileNavigationButtonHome}"
+            <!--Go To Student Profile-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToStudentProfile"
+                    Style="{StaticResource ProfileNavigationButtonForStudent}"
                     Content="Ivan Ivanov">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForStudent}"
-                    Content="Student Courses">
+            <!--Go To Student Courses-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToStudentCourses"
+                    Style="{StaticResource ProfileNavigationButtonForStudent}"
+                    Content="Courses">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForTeacher}"
+            <!--Go To Teacher Profile-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToTeacherProfile"
+                    Style="{StaticResource ProfileNavigationButtonForTeacher}"
+                    Content="Ivan Ivanov">
+            </Button>
+            <!--Go To Teacher Courses-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToTeacherCourses"
+                    Style="{StaticResource ProfileNavigationButtonForTeacher}"
                     Content="Teacher Courses">
             </Button>
             <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
@@ -41,6 +56,10 @@
             </Button>
             <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
                     Content="Add Student">
+            </Button>
+            <Button Command="{Binding Path=LogoutCommand}"
+                    Style="{StaticResource ProfileNavigationButtonLogout}"
+                    Content="Logout">
             </Button>
         </StackPanel>
         <!--User Profile Content-->

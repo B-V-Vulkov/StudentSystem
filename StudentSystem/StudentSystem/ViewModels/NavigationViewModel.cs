@@ -52,12 +52,13 @@
 
         private void ChangeView(string view)
         {
-            if (!ViewSource.views.ContainsKey(view))
+            if (!CommandDictionary.NavigationCommands.ContainsKey(view))
             {
                 throw new InvalidOperationException(ExceptionMessage.INVALID_VIEW_SOURCE_EXCEPTION);
             }
 
-            this.CurrentViewSource = ViewSource.views[view];
+            this.CurrentViewSource = CommandDictionary.NavigationCommands[view];
+
         }
 
         #endregion

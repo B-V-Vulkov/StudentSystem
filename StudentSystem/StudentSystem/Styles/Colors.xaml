@@ -20,5 +20,9 @@
     <SolidColorBrush x:Key="DarkText">#24292E</SolidColorBrush>
     <SolidColorBrush x:Key="LightText">#eeeeee</SolidColorBrush>
     <SolidColorBrush x:Key="NavigationButtonText">#0283B3</SolidColorBrush>
+    
+    <!--Table-->
+    <SolidColorBrush x:Key="DarkRowBackground">#5024292E</SolidColorBrush>
+    <SolidColorBrush x:Key="LightRowBackground">#3324292E</SolidColorBrush>
 
 </ResourceDictionary>
