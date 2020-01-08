@@ -13,6 +13,7 @@
     <None Remove="Resources\ButtonIcons\Students.png" />
     <None Remove="Resources\ButtonIcons\Teachers.png" />
     <None Remove="Resources\Logo.png" />
+    <None Remove="Resources\TestProfilePicture.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
     <Resource Include="Resources\ButtonIcons\Students.png" />
     <Resource Include="Resources\ButtonIcons\Teachers.png" />
     <Resource Include="Resources\StudentsIcons\Students.png" />
+    <Resource Include="Resources\TestProfilePicture.jpg" />
   </ItemGroup>
 
 </Project>
