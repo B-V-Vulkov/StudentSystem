@@ -14,6 +14,6 @@ namespace StudentSystem.Services.Models
 
         public DateTime EndDate { get; set; }
 
-        public double Result { get; set; }
+        public double? Result { get; set; }
     }
 }

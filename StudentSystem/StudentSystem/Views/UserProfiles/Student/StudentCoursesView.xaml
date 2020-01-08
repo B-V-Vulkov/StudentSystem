@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <!--Title-->
         <Border Grid.Row="0"
@@ -107,10 +108,10 @@
                                            Style="{StaticResource TableBody}" 
                                            Text="{Binding Path=ExamDate}">
                                 </TextBlock>
-                                <TextBlock Grid.Column="5"
-                                           Style="{StaticResource TableBody}" 
+                                <TextBox Grid.Column="5"
                                            Text="{Binding Path=Result}">
-                                </TextBlock>
+       
+                                </TextBox>
                             </Grid>
                             <DataTemplate.Triggers>
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="0">
@@ -131,5 +132,26 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
+        
+        <!--TODO: Add buttons for Save and Reset changes-->
+        <Grid Grid.Row="2"
+              Height="30"
+              Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Save Button-->
+            <Button Width="220" Grid.Column="0"
+                    Style="{StaticResource LoginButton}"
+                    Content="Save">
+            </Button>
+            <Button Width="220" Grid.Column="1"
+                    Style="{StaticResource LoginButton}"
+                    Content="Reset">
+            </Button>
+        </Grid>
+        
+
     </Grid>
 </UserControl>
