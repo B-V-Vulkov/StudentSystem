@@ -34,6 +34,9 @@
     <Compile Update="Views\UserProfiles\Student\StudentProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserProfiles\Teacher\TeacherCoursesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserProfiles\Teacher\TeacherProfileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +91,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Student\StudentProfileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserProfiles\Teacher\TeacherCoursesView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Teacher\TeacherProfileView.xaml">

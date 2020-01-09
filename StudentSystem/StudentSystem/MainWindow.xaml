@@ -8,7 +8,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1300">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"

@@ -76,7 +76,7 @@
         private void ValidateUser()
         {
             //TODO: GetUser in UserService
-            User.Login(UserType.Student);
+            User.Login(1, UserType.Teacher);
         }
 
         #endregion

@@ -6,6 +6,8 @@
 
         private static bool isLogin = false;
 
+        private static int userId = 0;
+
         private static UserType userType = UserType.Indefinite;
 
         public static event NotifyUserStateChangedEventHandler UserStateChanged;
@@ -29,6 +31,18 @@
             }
         }
 
+        public static int UserId
+        {
+            get
+            {
+                return userId;
+            }
+            set
+            {
+                userId = value;
+            }
+        }
+
         public static UserType UserType
         {
             get
@@ -48,13 +62,18 @@
         public static void Logout()
         {
             IsLogin = false;
+            UserType = UserType.Indefinite;
+            UserId = 0;
+
             UserStateChanged?.Invoke();
         }
 
-        public static void Login(UserType type)
+        public static void Login(int userId, UserType type)
         {
             IsLogin = true;
-            userType = type;
+            UserType = type;
+            UserId = userId;
+
             UserStateChanged?.Invoke();
         }
 

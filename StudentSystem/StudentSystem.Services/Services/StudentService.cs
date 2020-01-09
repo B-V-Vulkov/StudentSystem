@@ -6,6 +6,18 @@
 
     public class StudentService
     {
+        #region Declarations
+        #endregion
+
+        #region Initializations
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Methods
+        #endregion
+
         public List<Student> GetAllStudents()
         {
             return new List<Student>()

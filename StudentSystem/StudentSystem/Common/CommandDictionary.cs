@@ -15,8 +15,8 @@
             {"GoToStudentProfile", "Student/StudentProfileView.xaml" },
             {"GoToStudentCourses", "Student/StudentCoursesView.xaml" },
 
-            {"GoToTeacherProfile", "Student/StudentProfileView.xaml" },
-            {"GoToTeacherCourses", "Student/StudentCoursesView.xaml" },
+            {"GoToTeacherProfile", "Teacher/TeacherProfileView.xaml" },
+            {"GoToTeacherCourses", "Teacher/TeacherCoursesView.xaml" },
 
             {"GoToAdministratorProfile", "Student/StudentProfileView.xaml" },
             {"GoToAdministrator", "Student/StudentCoursesView.xaml" },

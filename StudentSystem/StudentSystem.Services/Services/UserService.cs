@@ -6,12 +6,24 @@
 
     public class UserService
     {
+        #region Declarations
+        #endregion
+
+        #region Initializations
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Methods
+        #endregion
+
         public UserModel GetUser(string userName, string password)
         {
             return new UserModel();
         }
 
-        private List<StudentCourses> courses = new List<StudentCourses>()
+        private static List<StudentCourses> courses = new List<StudentCourses>()
         {
             new StudentCourses()
                 {
@@ -87,15 +99,14 @@
                 },
         };
 
-        public void Save(List<StudentCourses> courses)
+        public void Save(List<StudentCourses> c)
         {
-            this.courses = courses;
+            courses = c;
         }
 
         public List<StudentCourses> GetCourses()
         {
-            return this.courses;
+            return courses;
         }
-
     }
 }
