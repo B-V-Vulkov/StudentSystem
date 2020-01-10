@@ -6,20 +6,21 @@
 
     using Services;
     using Services.Models;
+    using StudentSystem.Common;
 
     public class TeacherCoursesViewModel
     {
         #region Declarations
 
-        private string exceptionMessage;
+        private CourseService courseService;
 
-        private CourseService coursService;
+        private StudentService studentService;
 
-        private List<TeacherCourse> courses;
+        private IEnumerable<TeacherStudent> students;
 
-        private DelegateCommand saveChangesCommand;
+        private IEnumerable<TeacherCourse> courses;
 
-        private DelegateCommand resetChangesCommand;
+        private DelegateCommand<string> selectCourseCommand;
 
         #endregion
 
@@ -27,27 +28,20 @@
 
         public TeacherCoursesViewModel()
         {
-            this.coursService = new CourseService();
+            this.courseService = new CourseService();
+            this.studentService = new StudentService();
+
             this.courses = new List<TeacherCourse>();
+            this.students = new List<TeacherStudent>();
+
+            this.Courses = courseService.GetTeacherCourses(User.UserId);
         }
 
         #endregion
 
         #region Properties
 
-        public string ExceptionMessage
-        {
-            get
-            {
-                return this.exceptionMessage;
-            }
-            private set
-            {
-                this.exceptionMessage = value;
-            }
-        }
-
-        public List<TeacherCourse> Courses
+        public IEnumerable<TeacherCourse> Courses
         {
             get
             {
@@ -59,29 +53,28 @@
             }
         }
 
-        public DelegateCommand SaveChangesCommand
+        public IEnumerable<TeacherStudent> Students
         {
             get
             {
-                if (this.saveChangesCommand == null)
-                {
-                    this.saveChangesCommand = new DelegateCommand(SaveChanges);
-                }
-
-                return this.saveChangesCommand;
+                return this.students;
+            }
+            set
+            {
+                this.students = value;
             }
         }
 
-        public DelegateCommand ResetChangesCommand
+        public DelegateCommand<string> SelectCourseCommand
         {
             get
             {
-                if (this.resetChangesCommand == null)
+                if (this.selectCourseCommand == null)
                 {
-                    this.resetChangesCommand = new DelegateCommand(ResetChanges);
+                    this.selectCourseCommand = new DelegateCommand<string>(SelectCourse);
                 }
 
-                return this.resetChangesCommand;
+                return this.selectCourseCommand;
             }
         }
 
@@ -89,21 +82,9 @@
 
         #region Methods
 
-        private void SaveChanges()
+        private void SelectCourse(string courseId)
         {
-            try
-            {
-                coursService.Save(this.Courses);
-            }
-            catch (InvalidOperationException ioex)
-            {
-                this.ExceptionMessage = ioex.Message;
-            }
-        }
-
-        private void ResetChanges()
-        {
-            this.Courses = coursService.GetTeacherCourses(12);
+            this.Students = studentService.GetTeacherStudents(int.Parse(courseId));
         }
 
         #endregion

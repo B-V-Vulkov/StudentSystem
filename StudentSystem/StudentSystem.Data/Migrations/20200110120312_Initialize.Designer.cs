@@ -9,9 +9,9 @@ using StudentSystem.Data;
 
 namespace StudentSystem.Data.Migrations
 {
-    [DbContext(typeof(StudentSystemContext))]
-    [Migration("20200109145750_Intialize")]
-    partial class Intialize
+    [DbContext(typeof(StudentSystemDbContext))]
+    [Migration("20200110120312_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,15 @@ namespace StudentSystem.Data.Migrations
             modelBuilder.Entity("StudentSystem.Data.Models.Course", b =>
                 {
                     b.Property<int>("CourseId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExamDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -48,10 +56,15 @@ namespace StudentSystem.Data.Migrations
                         .HasMaxLength(100)
                         .IsUnicode(true);
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("CourseId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
                 });
@@ -194,7 +207,7 @@ namespace StudentSystem.Data.Migrations
                 {
                     b.HasOne("StudentSystem.Data.Models.Teacher", "Teacher")
                         .WithMany("Courses")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

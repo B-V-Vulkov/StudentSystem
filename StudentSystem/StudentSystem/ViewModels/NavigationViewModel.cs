@@ -58,7 +58,6 @@
             }
 
             this.CurrentViewSource = CommandDictionary.NavigationCommands[view];
-
         }
 
         #endregion

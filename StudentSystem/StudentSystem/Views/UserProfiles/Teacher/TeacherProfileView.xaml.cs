@@ -13,9 +13,7 @@ using System.Windows.Shapes;
 
 namespace StudentSystem.Views.UserProfiles.Teacher
 {
-    /// <summary>
-    /// Interaction logic for TeacherProfileView.xaml
-    /// </summary>
+
     public partial class TeacherProfileView : UserControl
     {
         public TeacherProfileView()

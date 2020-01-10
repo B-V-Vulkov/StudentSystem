@@ -5,7 +5,7 @@
 
     using Models;
 
-    public class StudentSystemContext : DbContext
+    public class StudentSystemDbContext : DbContext
     {
         public DbSet<Teacher> Users { get; set; }
 

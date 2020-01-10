@@ -4,8 +4,8 @@
     using System.Linq;
     using System.Collections.Generic;
 
+    using Data;
     using Models;
-    using StudentSystem.Data;
     using static Common.ExceptionMessage;
     using static Common.GlobalConstants;
 
@@ -22,18 +22,27 @@
 
         #region Methods
 
-        public List<Course> GetCourses()
+        public IEnumerable<TeacherCourse> GetTeacherCourses(int userId)
         {
-            var data = new StudentSystemContext();
+            IEnumerable<TeacherCourse> course = new List<TeacherCourse>();
 
-            var courses = data.Courses
-                .Select(x => new Course()
-                {
-                    Name = x.Name,
-                })
-                .ToList();
+            using (var context = new StudentSystemDbContext())
+            {
+                course = context.Courses
+                    .Where(x => x.Teacher.UserId == userId)
+                    .Select(x => new TeacherCourse()
+                    {
+                        CourseId = x.CourseId,
+                        Name = x.Name,
+                        StartDate = x.StartDate.ToString("MM/dd/yyyy"),
+                        EndDate = x.EndDate.ToString("MM/dd/yyyy"),
+                        ExamDate = x.ExamDate.ToString("MM/dd/yyyy"),
+                        StudentsEnrolled = x.StudentsEnrolled.Count,
+                    })
+                    .ToList();
+            }
 
-            return courses;
+            return course;
         }
 
 
@@ -49,26 +58,17 @@
             //TODO: Save changes to DB
         }
 
-        public List<TeacherCourse> GetTeacherCourses(int teacherId)
-        {
-            List<TeacherCourse> courses = new List<TeacherCourse>();
-
-            //TODO: Get courses for DB
-
-            return courses;
-        }
-
         private bool ValidateStudentsMark(IEnumerable<TeacherCourse> courses)
         {
             bool isValid = true;
 
             foreach (var course in courses)
             {
-                if (course.Mark > MAX_STUDENT_MARK || course.Mark < MIN_STUDENT_MARK)
-                {
-                    isValid = false;
-                    break;
-                }
+                //if (course.Mark > MAX_STUDENT_MARK || course.Mark < MIN_STUDENT_MARK)
+                //{
+                //    isValid = false;
+                //    break;
+                //}
             }
 
             return isValid;

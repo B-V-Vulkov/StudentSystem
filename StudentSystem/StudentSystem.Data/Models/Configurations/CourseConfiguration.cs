@@ -13,7 +13,7 @@
 
             course.HasOne(t => t.Teacher)
                 .WithMany(c => c.Courses)
-                .HasForeignKey(fk => fk.CourseId)
+                .HasForeignKey(fk => fk.TeacherId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             course.Property(n => n.Name)
@@ -22,6 +22,15 @@
                 .IsUnicode(true);
 
             course.Property(t => t.TeacherId)
+                .IsRequired(true);
+
+            course.Property(sd => sd.StartDate)
+                .IsRequired(true);
+
+            course.Property(ed => ed.EndDate)
+                .IsRequired(true);
+
+            course.Property(exd => exd.ExamDate)
                 .IsRequired(true);
         }
     }

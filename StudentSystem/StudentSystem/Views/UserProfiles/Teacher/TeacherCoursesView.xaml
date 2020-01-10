@@ -9,10 +9,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--Title-->
+        <!--Courses Title-->
         <Border Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Margin="20"
@@ -23,9 +24,9 @@
                        Text="Courses">
             </TextBlock>
         </Border>
-        <!--Table-->
-
+        <!--Courses Table-->
         <Grid Grid.Row="1"
+              Height="110"
               Margin="20 0"
               Background="{StaticResource SecondaryLightBackgrounds}">
             <Grid.RowDefinitions>
@@ -39,7 +40,6 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -66,69 +66,69 @@
                                Style="{StaticResource TableHeader}"
                                Text="Students">
                     </TextBlock>
-                    <TextBlock Grid.Column="5"
-                               Style="{StaticResource TableHeader}"
-                               Text="Students Department">
-                    </TextBlock>
                 </Grid>
             </Border>
             <!--Table Body-->
             <ScrollViewer Grid.Row="1"
-                          VerticalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Visible"
                           HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl ItemsSource="{Binding Path=Courses}" 
                               AlternationCount="2">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid x:Name="Row"
-                                  Background="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button>
+                            <Button Background="Red"
+                                    HorizontalContentAlignment="Stretch"
+                                    BorderThickness="0"
+                                    BorderBrush="Transparent"
+                                    Command="{Binding Path=SelectCourseCommand}">
+                                <Grid x:Name="Row"
+                                      Height="20"
+                                      VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0"
-                                           Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Name}">
+                                       Style="{StaticResource TableBody}" 
+                                       Text="{Binding Path=Courses.Name}">
                                     </TextBlock>
-                                </Button>
-
-                                <TextBlock Grid.Column="1"
+                                    <TextBlock Grid.Column="1"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Teacher}">
-                                </TextBlock>
-                                <TextBlock Grid.Column="2"
+                                           Text="{Binding Path=Courses.StartDate}">
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="2"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=StartDate}">
-                                </TextBlock>
-                                <TextBlock Grid.Column="3"
+                                           Text="{Binding Path=Courses.EndDate}">
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="3"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=EndDate}">
-                                </TextBlock>
-                                <TextBlock Grid.Column="4"
+                                           Text="{Binding Path=Courses.ExamDate}">
+                                    </TextBlock>
+                                    <TextBlock Grid.Column="4"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=ExamDate}">
-                                </TextBlock>
-                                <TextBox Grid.Column="5"
-                                           Text="{Binding Path=Result}">
-
-                                </TextBox>
-                            </Grid>
+                                           Text="{Binding Path=Courses.StudentsEnrolled}">
+                                    </TextBlock>
+                                </Grid>
+                            </Button>
                             <DataTemplate.Triggers>
-                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                                    <Setter TargetName="Row" 
-                                            Property="Background" 
-                                            Value="{StaticResource LightRowBackground}">
-                                    </Setter>
-                                </Trigger>
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                                     <Setter TargetName="Row" 
                                             Property="Background" 
-                                            Value="{Binding DarkRowBackground}">
+                                            Value="{StaticResource DarkRowBackground}">
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter TargetName="Row" 
+                                            Property="Background" 
+                                            Value="{Binding LightRowBackground}">
                                     </Setter>
                                 </Trigger>
                             </DataTemplate.Triggers>
@@ -138,9 +138,123 @@
             </ScrollViewer>
         </Grid>
 
+        <!--Students Title-->
+        <Border Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="20"
+                BorderThickness="0 0 0 2"
+                BorderBrush="{StaticResource NavigationButtonText}">
+            <TextBlock FontSize="25"
+                       Foreground="{StaticResource DarkText}" 
+                       Text="Students">
+            </TextBlock>
+        </Border>
+        <!--Students Table-->
+        <Grid Grid.Row="3"
+              VerticalAlignment="Top"
+              Margin="20 0"
+              Background="{StaticResource SecondaryLightBackgrounds}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Table Header-->
+            <Border Grid.Row="0" 
+                    CornerRadius="10 10 0 0"
 
-
-
-
+                    Background="{StaticResource SecondaryDarkBackgrounds}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               Style="{StaticResource TableHeader}"
+                               Text="First Name">
+                    </TextBlock>
+                    <TextBlock Grid.Column="1"
+                               Style="{StaticResource TableHeader}"
+                               Text="Middle Name">
+                    </TextBlock>
+                    <TextBlock Grid.Column="2"
+                               Style="{StaticResource TableHeader}"
+                               Text="Last Name">
+                    </TextBlock>
+                    <TextBlock Grid.Column="3"
+                               Style="{StaticResource TableHeader}"
+                               Text="Student Id">
+                    </TextBlock>
+                    <TextBlock Grid.Column="4"
+                               Style="{StaticResource TableHeader}"
+                               Text="Mark">
+                    </TextBlock>
+                </Grid>
+            </Border>
+            <!--Table Body-->
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl ItemsSource="{Binding Path=Courses}" 
+                              AlternationCount="2">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="Row"
+                                  Height="20"
+                                  VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                       Style="{StaticResource TableBody}" 
+                                       Text="{Binding Path=FirstName}">
+                                </TextBlock>
+                                <TextBlock Grid.Column="1"
+                                           Style="{StaticResource TableBody}" 
+                                           Text="{Binding Path=MiddleName}">
+                                </TextBlock>
+                                <TextBlock Grid.Column="2"
+                                           Style="{StaticResource TableBody}" 
+                                           Text="{Binding Path=LastName}">
+                                </TextBlock>
+                                <TextBlock Grid.Column="3"
+                                           Style="{StaticResource TableBody}" 
+                                           Text="{Binding Path=StudentId}">
+                                </TextBlock>
+                                <TextBox Grid.Column="4"
+                                           Text="{Binding Path=Mark}">
+                                </TextBox>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter TargetName="Row" 
+                                            Property="Background" 
+                                            Value="{StaticResource DarkRowBackground}">
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter TargetName="Row" 
+                                            Property="Background" 
+                                            Value="{Binding LightRowBackground}">
+                                    </Setter>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>
