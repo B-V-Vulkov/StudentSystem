@@ -3,18 +3,16 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    using static DataValidations;
-
     public class TownConfiguration : IEntityTypeConfiguration<Town>
     {
         public void Configure(EntityTypeBuilder<Town> town)
         {
-            town.HasKey(key => key.TownId);
+            town.HasMany(u => u.Users)
+                .WithOne(t => t.Town)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            town.Property(n => n.Name)
-                .HasMaxLength(DEPARTMENT_NAME_MAX_LENGTH)
-                .IsRequired(true)
-                .IsUnicode(true);
+            town.Property(t => t.TownId)
+                .UseIdentityColumn(1, 1);
         }
     }
 }

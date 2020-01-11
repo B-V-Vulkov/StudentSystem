@@ -45,6 +45,19 @@
             return course;
         }
 
+        public string GetCourseNameById(int courseId)
+        {
+            string courseName = string.Empty;
+
+            using (var context = new StudentSystemDbContext())
+            {
+                courseName = context.Courses
+                    .FirstOrDefault(x => x.CourseId == courseId).Name;
+            }
+
+            return courseName;
+        }
+
 
         public void Save(IEnumerable<TeacherCourse> courses)
         {

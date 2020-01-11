@@ -1,5 +1,8 @@
 ﻿namespace StudentSystem.Data.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("StudentCourses")]
     public class StudentCourse
     {
         public int StudentId { get; set; }

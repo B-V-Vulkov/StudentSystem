@@ -7,16 +7,12 @@
     {
         public void Configure(EntityTypeBuilder<Student> student)
         {
-            student.HasKey(key => key.StudentId);
-
             student.HasOne(u => u.User)
                 .WithOne(s => s.Student)
-                .HasForeignKey<User>(fk => fk.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            student.Property(u => u.UserId)
-                .IsRequired(true)
-                .IsUnicode(true);
+            student.Property(t => t.StudentId)
+                .UseIdentityColumn(1, 1);
         }
     }
 }

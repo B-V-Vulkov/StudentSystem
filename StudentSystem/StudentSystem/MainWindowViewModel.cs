@@ -5,8 +5,6 @@
     using Prism.Commands;
 
     using Common;
-    using StudentSystem.Data;
-    using Microsoft.EntityFrameworkCore;
 
     public class MainWindowViewModel
     {

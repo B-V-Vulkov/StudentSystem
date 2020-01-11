@@ -3,18 +3,16 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    using static DataValidations;
-
     public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> department)
         {
-            department.HasKey(key => key.DepartmentId);
+            department.HasMany(u => u.Users)
+                .WithOne(t => t.Department)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            department.Property(n => n.Name)
-                .HasMaxLength(DEPARTMENT_NAME_MAX_LENGTH)
-                .IsRequired(true)
-                .IsUnicode(true);
+            department.Property(t => t.DepartmentId)
+                .UseIdentityColumn(1, 1);
         }
     }
 }

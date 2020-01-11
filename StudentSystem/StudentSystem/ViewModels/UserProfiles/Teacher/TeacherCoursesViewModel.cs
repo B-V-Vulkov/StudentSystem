@@ -7,8 +7,9 @@
     using Services;
     using Services.Models;
     using StudentSystem.Common;
+    using System.Linq;
 
-    public class TeacherCoursesViewModel
+    public class TeacherCoursesViewModel : BaseViewModel
     {
         #region Declarations
 
@@ -20,7 +21,9 @@
 
         private IEnumerable<TeacherCourse> courses;
 
-        private DelegateCommand<string> selectCourseCommand;
+        private string nameOfCurrentCourse;
+
+        private DelegateCommand<object> selectCourseCommand;
 
         #endregion
 
@@ -28,13 +31,7 @@
 
         public TeacherCoursesViewModel()
         {
-            this.courseService = new CourseService();
-            this.studentService = new StudentService();
-
-            this.courses = new List<TeacherCourse>();
-            this.students = new List<TeacherStudent>();
-
-            this.Courses = courseService.GetTeacherCourses(User.UserId);
+            Initialize();
         }
 
         #endregion
@@ -62,16 +59,30 @@
             set
             {
                 this.students = value;
+                NotifyPropertyChanged();
             }
         }
 
-        public DelegateCommand<string> SelectCourseCommand
+        public string NameOfCurrentCourse
+        {
+            get
+            {
+                return this.nameOfCurrentCourse;
+            }
+            set
+            {
+                this.nameOfCurrentCourse = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public DelegateCommand<object> SelectCourseCommand
         {
             get
             {
                 if (this.selectCourseCommand == null)
                 {
-                    this.selectCourseCommand = new DelegateCommand<string>(SelectCourse);
+                    this.selectCourseCommand = new DelegateCommand<object>(SelectCourse);
                 }
 
                 return this.selectCourseCommand;
@@ -82,9 +93,31 @@
 
         #region Methods
 
-        private void SelectCourse(string courseId)
+        private void SelectCourse(object courseId)
         {
-            this.Students = studentService.GetTeacherStudents(int.Parse(courseId));
+            this.NameOfCurrentCourse = courseService.GetCourseNameById((int)courseId);
+            this.Students = studentService.GetTeacherStudents((int)courseId);
+        }
+
+        private void Initialize()
+        {
+            this.courseService = new CourseService();
+            this.studentService = new StudentService();
+
+            this.courses = new List<TeacherCourse>();
+            this.students = new List<TeacherStudent>();
+
+            this.Courses = courseService
+                .GetTeacherCourses(User.UserId);
+
+            var initializedCourse = this.Courses
+                .FirstOrDefault();
+
+            if (initializedCourse != null)
+            {
+                this.NameOfCurrentCourse = courseService.GetCourseNameById(initializedCourse.CourseId);
+                this.Students = studentService.GetTeacherStudents(initializedCourse.CourseId);
+            }
         }
 
         #endregion

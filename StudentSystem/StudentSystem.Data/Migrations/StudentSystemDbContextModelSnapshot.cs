@@ -24,13 +24,17 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("AdministratorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .IsUnicode(true);
+                        .HasColumnType("int");
 
                     b.HasKey("AdministratorId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Administrators");
                 });
@@ -40,6 +44,8 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("CourseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("EndDate")
@@ -50,9 +56,7 @@ namespace StudentSystem.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100)
-                        .IsUnicode(true);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -72,13 +76,13 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("DepartmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100)
-                        .IsUnicode(true);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DepartmentId");
 
@@ -90,31 +94,35 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .IsUnicode(true);
+                        .HasColumnType("int");
 
                     b.HasKey("StudentId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Students");
                 });
 
             modelBuilder.Entity("StudentSystem.Data.Models.StudentCourse", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<double?>("Mark")
                         .HasColumnType("float");
 
-                    b.HasKey("CourseId", "StudentId");
+                    b.HasKey("StudentId", "CourseId");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("CourseId");
 
                     b.ToTable("StudentCourses");
                 });
@@ -124,15 +132,19 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("TeacherId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .IsUnicode(true);
+                        .HasColumnType("int");
 
                     b.HasKey("TeacherId");
 
-                    b.ToTable("Teacher");
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("StudentSystem.Data.Models.Town", b =>
@@ -140,13 +152,13 @@ namespace StudentSystem.Data.Migrations
                     b.Property<int>("TownId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100)
-                        .IsUnicode(true);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TownId");
 
@@ -156,49 +168,54 @@ namespace StudentSystem.Data.Migrations
             modelBuilder.Entity("StudentSystem.Data.Models.User", b =>
                 {
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MiddleName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)")
-                        .HasMaxLength(40)
-                        .IsUnicode(true);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TownId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)")
-                        .HasMaxLength(40)
-                        .IsUnicode(true);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("DepartmentId")
-                        .IsUnique();
+                    b.HasIndex("DepartmentId");
 
                     b.HasIndex("TownId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("StudentSystem.Data.Models.Administrator", b =>
+                {
+                    b.HasOne("StudentSystem.Data.Models.User", "User")
+                        .WithOne("Administrator")
+                        .HasForeignKey("StudentSystem.Data.Models.Administrator", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("StudentSystem.Data.Models.Course", b =>
@@ -206,6 +223,15 @@ namespace StudentSystem.Data.Migrations
                     b.HasOne("StudentSystem.Data.Models.Teacher", "Teacher")
                         .WithMany("Courses")
                         .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StudentSystem.Data.Models.Student", b =>
+                {
+                    b.HasOne("StudentSystem.Data.Models.User", "User")
+                        .WithOne("Student")
+                        .HasForeignKey("StudentSystem.Data.Models.Student", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -225,35 +251,26 @@ namespace StudentSystem.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentSystem.Data.Models.User", b =>
+            modelBuilder.Entity("StudentSystem.Data.Models.Teacher", b =>
                 {
-                    b.HasOne("StudentSystem.Data.Models.Administrator", "Administrator")
-                        .WithOne("User")
-                        .HasForeignKey("StudentSystem.Data.Models.User", "DepartmentId")
+                    b.HasOne("StudentSystem.Data.Models.User", "User")
+                        .WithOne("Teacher")
+                        .HasForeignKey("StudentSystem.Data.Models.Teacher", "UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
 
+            modelBuilder.Entity("StudentSystem.Data.Models.User", b =>
+                {
                     b.HasOne("StudentSystem.Data.Models.Department", "Department")
                         .WithMany("Users")
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("StudentSystem.Data.Models.Town", "Town")
                         .WithMany("Users")
-                        .HasForeignKey("TownId");
-
-                    b.HasOne("StudentSystem.Data.Models.Student", "Student")
-                        .WithOne("User")
-                        .HasForeignKey("StudentSystem.Data.Models.User", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("StudentSystem.Data.Models.Teacher", "Teacher")
-                        .WithOne("User")
-                        .HasForeignKey("StudentSystem.Data.Models.User", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("TownId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }
