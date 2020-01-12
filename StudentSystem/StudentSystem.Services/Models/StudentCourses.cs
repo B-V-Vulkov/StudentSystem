@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace StudentSystem.Services.Models
+﻿namespace StudentSystem.Services.Models
 {
+    using System;
+
     public class StudentCourses
     {
         public string Name { get; set; }

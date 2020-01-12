@@ -18,8 +18,7 @@
         <!--User Profile Navigation-->
         <StackPanel Grid.Row="0"
                     Height="30"
-                    Orientation="Horizontal"
-                    Background="{StaticResource SecondaryDarkBackgrounds}">
+                    Orientation="Horizontal">
 
             <!--Go To Student Profile-->
             <Button Command="{Binding Path=ChangeViewCommand}"
@@ -37,13 +36,13 @@
             <Button Command="{Binding Path=ChangeViewCommand}"
                     CommandParameter="GoToTeacherProfile"
                     Style="{StaticResource ProfileNavigationButtonForTeacher}"
-                    Content="Ivan Ivanov">
+                    Content="Ivan Ivanov Petrov">
             </Button>
             <!--Go To Teacher Courses-->
             <Button Command="{Binding Path=ChangeViewCommand}"
                     CommandParameter="GoToTeacherCourses"
                     Style="{StaticResource ProfileNavigationButtonForTeacher}"
-                    Content="Teacher Courses">
+                    Content="Courses">
             </Button>
             <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
                     Content="Add Student">

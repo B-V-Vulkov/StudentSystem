@@ -22,9 +22,9 @@
 
         #region Methods
 
-        public IEnumerable<TeacherCourse> GetTeacherCourses(int userId)
+        public List<TeacherCourse> GetTeacherCourses(int userId)
         {
-            IEnumerable<TeacherCourse> course = new List<TeacherCourse>();
+            List<TeacherCourse> course = new List<TeacherCourse>();
 
             using (var context = new StudentSystemDbContext())
             {

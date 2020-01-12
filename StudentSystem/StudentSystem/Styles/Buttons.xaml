@@ -30,7 +30,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <!--Window Close Button-->
     <Style x:Key="CloseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource WindowButton}">
         <Style.Triggers>
@@ -87,20 +87,22 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <!--Base User Profile Navigation Button-->
     <Style x:Key="BaseProfileNavigationButton" TargetType="Button">
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource LightText}"/>
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="Width" Value="0"/>
         <Setter Property="Height" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0 0 0 2"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -108,19 +110,21 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource ProfileNavigationButtonMouseOver}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource NavigationButtonText}"/>
+                <Setter Property="BorderThickness" Value="0 0 0 2"/>
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="ProfileNavigationButtonForStudent" 
            TargetType="Button" 
            BasedOn="{StaticResource BaseProfileNavigationButton}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=UserType}" Value="Student">
                 <Setter Property="Visibility" Value="Visible"/>
-                <Setter Property="Width" Value="100"/>
-                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="20 0 0 0"/>
+                <Setter Property="Width" Value="auto"/>
+                <Setter Property="Height" Value="25"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -131,8 +135,9 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=UserType}" Value="Teacher">
                 <Setter Property="Visibility" Value="Visible"/>
-                <Setter Property="Width" Value="100"/>
-                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="20 0 0 0"/>
+                <Setter Property="Width" Value="auto"/>
+                <Setter Property="Height" Value="25"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -143,18 +148,67 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding Path=UserType}" Value="Administrator">
                 <Setter Property="Visibility" Value="Visible"/>
-                <Setter Property="Width" Value="100"/>
-                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="20 0 0 0"/>
+                <Setter Property="Width" Value="auto"/>
+                <Setter Property="Height" Value="25"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
     <Style x:Key="ProfileNavigationButtonLogout"
-           TargetType="Button" 
+           TargetType="Button"
            BasedOn="{StaticResource BaseProfileNavigationButton}">
         <Setter Property="Visibility" Value="Visible"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="20 0 0 0"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="25"/>
     </Style>
 
+    <!--Table Row Button-->
+    <Style x:Key="TableRowButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource TableRowButtonMouseOver}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--ProfileCommandButton-->
+    <Style x:Key="ProfileCommandButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource SecondaryDarkBackgrounds}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightText}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="20 0 0 0"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="5" 
+                            BorderThickness="0"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"></ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryDarkBorder}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

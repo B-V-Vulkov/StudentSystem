@@ -1,13 +1,12 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Teacher
 {
-    using System;
+    using System.Linq;
     using System.Collections.Generic;
     using Prism.Commands;
 
+    using Common;
     using Services;
     using Services.Models;
-    using StudentSystem.Common;
-    using System.Linq;
 
     public class TeacherCoursesViewModel : BaseViewModel
     {
@@ -17,13 +16,21 @@
 
         private StudentService studentService;
 
-        private IEnumerable<TeacherStudent> students;
+        private List<TeacherStudent> students;
 
-        private IEnumerable<TeacherCourse> courses;
+        private List<TeacherCourse> courses;
 
-        private string nameOfCurrentCourse;
+        private string selectedCourseName;
+
+        private int selectedCourseId;
+
+        private string exceptionMessage;
 
         private DelegateCommand<object> selectCourseCommand;
+
+        private DelegateCommand saveChangesCommand;
+
+        private DelegateCommand resetChangesCommand;
 
         #endregion
 
@@ -38,7 +45,7 @@
 
         #region Properties
 
-        public IEnumerable<TeacherCourse> Courses
+        public List<TeacherCourse> Courses
         {
             get
             {
@@ -50,7 +57,7 @@
             }
         }
 
-        public IEnumerable<TeacherStudent> Students
+        public List<TeacherStudent> Students
         {
             get
             {
@@ -63,15 +70,28 @@
             }
         }
 
-        public string NameOfCurrentCourse
+        public string SelectedCourseName
         {
             get
             {
-                return this.nameOfCurrentCourse;
+                return this.selectedCourseName;
             }
             set
             {
-                this.nameOfCurrentCourse = value;
+                this.selectedCourseName = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public string ExceptionMessage
+        {
+            get
+            {
+                return this.exceptionMessage;
+            }
+            set
+            {
+                this.exceptionMessage = value;
                 NotifyPropertyChanged();
             }
         }
@@ -89,15 +109,35 @@
             }
         }
 
+        public DelegateCommand SaveChangesCommand
+        {
+            get
+            {
+                if (this.saveChangesCommand == null)
+                {
+                    this.saveChangesCommand = new DelegateCommand(SaveChanges);
+                }
+
+                return this.saveChangesCommand;
+            }
+        }
+
+        public DelegateCommand ResetChangesCommand
+        {
+            get
+            {
+                if (this.resetChangesCommand == null)
+                {
+                    this.resetChangesCommand = new DelegateCommand(ResetChanges);
+                }
+
+                return this.resetChangesCommand;
+            }
+        }
+
         #endregion
 
         #region Methods
-
-        private void SelectCourse(object courseId)
-        {
-            this.NameOfCurrentCourse = courseService.GetCourseNameById((int)courseId);
-            this.Students = studentService.GetTeacherStudents((int)courseId);
-        }
 
         private void Initialize()
         {
@@ -115,9 +155,57 @@
 
             if (initializedCourse != null)
             {
-                this.NameOfCurrentCourse = courseService.GetCourseNameById(initializedCourse.CourseId);
-                this.Students = studentService.GetTeacherStudents(initializedCourse.CourseId);
+                this.Students = studentService
+                    .GetTeacherStudents(initializedCourse.CourseId);
+
+                this.SelectedCourseName = courseService
+                    .GetCourseNameById(initializedCourse.CourseId);
+
+                this.selectedCourseId = initializedCourse.CourseId;
             }
+        }
+
+        private void SelectCourse(object courseId)
+        {
+            if (courseId == null)
+            {
+                return;
+            }
+
+            this.Students = studentService
+                .GetTeacherStudents((int)courseId);
+
+            this.SelectedCourseName = courseService
+                .GetCourseNameById((int)courseId);
+
+            this.selectedCourseId = (int)courseId;
+
+            this.ExceptionMessage = string.Empty;
+        }
+
+        private void SaveChanges()
+        {
+            try
+            {
+                this.studentService.SaveStudentMarks(Students, selectedCourseId);
+
+                this.Students = studentService
+                    .GetTeacherStudents(selectedCourseId);
+
+                this.ExceptionMessage = string.Empty;
+            }
+            catch (System.InvalidOperationException ioex)
+            {
+                this.ExceptionMessage = ioex.Message;
+            }
+        }
+
+        private void ResetChanges()
+        {
+            this.Students = studentService
+                .GetTeacherStudents(selectedCourseId);
+
+            this.ExceptionMessage = string.Empty;
         }
 
         #endregion

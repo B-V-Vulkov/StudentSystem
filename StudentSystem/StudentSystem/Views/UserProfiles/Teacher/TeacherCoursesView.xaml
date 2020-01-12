@@ -12,13 +12,14 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <!--Courses Title-->
         <Border Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Margin="20"
                 BorderThickness="0 0 0 2"
-                BorderBrush="{StaticResource NavigationButtonText}">
+                BorderBrush="{StaticResource TitleBorder}">
             <TextBlock FontSize="25"
                        Foreground="{StaticResource DarkText}" 
                        Text="Courses">
@@ -26,15 +27,17 @@
         </Border>
         <!--Courses Table-->
         <Grid Grid.Row="1"
-              Height="110"
+              Height="105"
               Margin="20 0"
               Background="{StaticResource SecondaryLightBackgrounds}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <!--Table Header-->
-            <Border Grid.Row="0" 
+            <Border Grid.Row="0"
+                    Height="25"
                     CornerRadius="10 10 0 0"
                     Background="{StaticResource SecondaryDarkBackgrounds}">
                 <Grid>
@@ -82,10 +85,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Background="Transparent"
-                                    HorizontalContentAlignment="Stretch"
-                                    BorderThickness="0"
-                                    BorderBrush="Transparent"
+                            <Button Style="{StaticResource TableRowButton}"
                                     Command="{Binding ElementName=CoursesListing, Path=DataContext.SelectCourseCommand}"
                                     CommandParameter="{Binding Path=CourseId}">
                                 <Grid x:Name="Row"
@@ -121,16 +121,16 @@
                                 </Grid>
                             </Button>
                             <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter TargetName="Row" 
+                                            Property="Background" 
+                                            Value="{StaticResource LightRowBackground}">
+                                    </Setter>
+                                </Trigger>
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                                     <Setter TargetName="Row" 
                                             Property="Background" 
                                             Value="{StaticResource DarkRowBackground}">
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                                    <Setter TargetName="Row" 
-                                            Property="Background" 
-                                            Value="{Binding LightRowBackground}">
                                     </Setter>
                                 </Trigger>
                             </DataTemplate.Triggers>
@@ -139,21 +139,20 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
-
         <!--Students Title-->
         <Border Grid.Row="2"
                 Grid.ColumnSpan="2"
                 Margin="20"
                 BorderThickness="0 0 0 2"
-                BorderBrush="{StaticResource NavigationButtonText}">
+                BorderBrush="{StaticResource TitleBorder}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="25"
                        Foreground="{StaticResource DarkText}" 
-                       Text="Students in ">
+                       Text="Students ">
                 </TextBlock>
                 <TextBlock FontSize="25"
                        Foreground="{StaticResource DarkText}" 
-                       Text="{Binding Path=NameOfCurrentCourse}">
+                       Text="{Binding Path=SelectedCourseName}">
                 </TextBlock>
             </StackPanel>
         </Border>
@@ -204,6 +203,7 @@
             </Border>
             <!--Table Body-->
             <ScrollViewer Grid.Row="1"
+                          MaxHeight="300"
                           VerticalScrollBarVisibility="Visible"
                           HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl ItemsSource="{Binding Path=Students}" 
@@ -219,7 +219,7 @@
                                   Height="20"
                                   VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -241,21 +241,26 @@
                                            Style="{StaticResource TableBody}" 
                                            Text="{Binding Path=StudentId}">
                                 </TextBlock>
-                                <TextBox Grid.Column="4"
+                                <TextBox Grid.Column="4" BorderBrush="Transparent"
+                                         Background="Transparent"
+                                         Margin="15 0"
+                                         VerticalAlignment="Center"
+                                         FontSize="15"
+                                         BorderThickness="0"
                                            Text="{Binding Path=Mark}">
                                 </TextBox>
                             </Grid>
                             <DataTemplate.Triggers>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter TargetName="Row" 
+                                            Property="Background" 
+                                            Value="{StaticResource LightRowBackground}">
+                                    </Setter>
+                                </Trigger>
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                                     <Setter TargetName="Row" 
                                             Property="Background" 
                                             Value="{StaticResource DarkRowBackground}">
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                                    <Setter TargetName="Row" 
-                                            Property="Background" 
-                                            Value="{Binding LightRowBackground}">
                                     </Setter>
                                 </Trigger>
                             </DataTemplate.Triggers>
@@ -264,5 +269,28 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
+        
+        <!--Button Section-->
+        <StackPanel Grid.Row="4" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button x:Name="Save"
+                    Command="{Binding Path=SaveChangesCommand}"
+                    Style="{StaticResource ProfileCommandButton}"
+                    Content="Save Changes">
+            </Button>
+            <Button x:Name="Reset"
+                    Command="{Binding Path=ResetChangesCommand}"
+                    Style="{StaticResource ProfileCommandButton}"
+                    Content="Reset Changes">
+            </Button>
+            <TextBlock Margin="50 0 0 0"
+                       VerticalAlignment="Center"
+                       Foreground="DarkRed"
+                       FontSize="15"
+                       Text="{Binding Path=ExceptionMessage}">
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </UserControl>

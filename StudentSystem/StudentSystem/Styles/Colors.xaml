@@ -10,6 +10,7 @@
     <!--Borders-->
     <SolidColorBrush x:Key="PrimaryDarkBorder">#24292E</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryLightBorder">#9E9E9E</SolidColorBrush>
+    <SolidColorBrush x:Key="TitleBorder">#0283B3</SolidColorBrush>
 
     <!--Buttons-->
     <SolidColorBrush x:Key="WindowCommandButtonMouseOver">#3F3F41</SolidColorBrush>
@@ -20,9 +21,10 @@
     <SolidColorBrush x:Key="DarkText">#24292E</SolidColorBrush>
     <SolidColorBrush x:Key="LightText">#eeeeee</SolidColorBrush>
     <SolidColorBrush x:Key="NavigationButtonText">#0283B3</SolidColorBrush>
-    
+    <SolidColorBrush x:Key="TableRowButtonMouseOver">#500283B3</SolidColorBrush>
+
     <!--Table-->
-    <SolidColorBrush x:Key="DarkRowBackground">#5024292E</SolidColorBrush>
-    <SolidColorBrush x:Key="LightRowBackground">#3324292E</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkRowBackground">#200283B3</SolidColorBrush>
+    <SolidColorBrush x:Key="LightRowBackground">#100283B3</SolidColorBrush>
 
 </ResourceDictionary>

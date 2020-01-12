@@ -14,6 +14,6 @@
             "The user type must be part of StudentSystem.Common.UserType";
 
         public static string INVALID_STUDENT_MARK =
-            $"The student mark must be between {MIN_STUDENT_MARK} and {MAX_STUDENT_MARK}.";
+            $"Student marks must be between {MIN_STUDENT_MARK} and {MAX_STUDENT_MARK}.";
     }
 }

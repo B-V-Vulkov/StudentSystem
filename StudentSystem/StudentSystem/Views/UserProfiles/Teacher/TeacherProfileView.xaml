@@ -7,6 +7,119 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--Personal Information Title-->
+        <Border Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="20"
+                BorderThickness="0 0 0 2"
+                BorderBrush="{StaticResource TitleBorder}">
+            <TextBlock FontSize="25"
+                       Foreground="{StaticResource DarkText}" 
+                       Text="Personal Information">
+            </TextBlock>
+        </Border>
+        
+        <!--Personal Information Content-->
+        <Grid Grid.Row="1"
+              Margin="20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!--First Name-->
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="First Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="Ivanov">
+                </TextBlock>
+            </StackPanel>
+            <!--Miggle Name-->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        Background="{StaticResource LightRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Middle Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="Ivanov">
+                </TextBlock>
+            </StackPanel>
+            <!--Last Name-->
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Last Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="Ivanov">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
 
+        <!--Education Information Title-->
+        <Border Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="20"
+                BorderThickness="0 0 0 2"
+                BorderBrush="{StaticResource TitleBorder}">
+            <TextBlock FontSize="25"
+                       Foreground="{StaticResource DarkText}" 
+                       Text="Education Information">
+            </TextBlock>
+        </Border>
+        <!--Education Information Content-->
+        <Grid Grid.Row="3"
+              Margin="20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!--Department-->
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Department">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="C# Web Development">
+                </TextBlock>
+            </StackPanel>
+            <!--Courses-->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        Background="{StaticResource LightRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Courses">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="3">
+                </TextBlock>
+            </StackPanel>
+            <!--Students-->
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Students">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="134">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

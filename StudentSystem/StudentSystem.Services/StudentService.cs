@@ -11,20 +11,11 @@
 
     public class StudentService
     {
-        #region Declarations
-        #endregion
-
-        #region Initializations
-        #endregion
-
-        #region Properties
-        #endregion
-
         #region Methods
 
-        public IEnumerable<TeacherStudent> GetTeacherStudents(int courseId)
+        public List<TeacherStudent> GetTeacherStudents(int courseId)
         {
-            IEnumerable<TeacherStudent> students = new List<TeacherStudent>();
+            List<TeacherStudent> students = new List<TeacherStudent>();
 
             using (var context = new StudentSystemDbContext())
             {
@@ -42,6 +33,53 @@
             }
 
             return students;
+        }
+
+        public void SaveStudentMarks(IList<TeacherStudent> students, int courseId)
+        {
+            bool isValid = ValidateStudentsMark(students);
+
+            if (!isValid)
+            {
+                throw new InvalidOperationException(INVALID_STUDENT_MARK);
+            }
+
+            using (var context = new StudentSystemDbContext())
+            {
+                var studentsForUpdate = context.StudentCourses
+                    .Where(x => x.CourseId == courseId)
+                    .ToArray();
+
+                for (int i = 0; i < studentsForUpdate.Length; i++)
+                {
+                    var mark = students[i].Mark;
+
+                    if (mark != null)
+                    {
+                        studentsForUpdate[i].Mark = Math.Round((double)mark, 2, MidpointRounding.ToEven);
+                    }
+                }
+
+                context.SaveChanges();
+            }
+        }
+
+        private bool ValidateStudentsMark(IEnumerable<TeacherStudent> students)
+        {
+            bool isValid = true;
+
+            foreach (var student in students)
+            {
+                if (student.Mark != null 
+                    && (student.Mark > MAX_STUDENT_MARK 
+                    || student.Mark < MIN_STUDENT_MARK))
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            return isValid;
         }
 
         #endregion
