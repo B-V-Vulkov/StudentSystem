@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace StudentSystem.Views.UserProfiles.Teacher
+﻿namespace StudentSystem.Views.UserProfiles.Teacher
 {
+    using StudentSystem.ViewModels.UserProfiles.Teacher;
+    using System.Windows.Controls;
 
     public partial class TeacherProfileView : UserControl
     {
         public TeacherProfileView()
         {
             InitializeComponent();
+            this.DataContext = new TeacherProfileViewModel();
         }
     }
 }

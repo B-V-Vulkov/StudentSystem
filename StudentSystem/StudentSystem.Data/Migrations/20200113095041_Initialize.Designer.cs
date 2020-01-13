@@ -10,7 +10,7 @@ using StudentSystem.Data;
 namespace StudentSystem.Data.Migrations
 {
     [DbContext(typeof(StudentSystemDbContext))]
-    [Migration("20200111122757_Initialize")]
+    [Migration("20200113095041_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

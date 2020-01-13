@@ -41,7 +41,7 @@
                            Text="First Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="Ivanov">
+                           Text="{Binding Path=FirstName}">
                 </TextBlock>
             </StackPanel>
             <!--Miggle Name-->
@@ -52,7 +52,7 @@
                            Text="Middle Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="Ivanov">
+                           Text="{Binding Path=MiddleName}">
                 </TextBlock>
             </StackPanel>
             <!--Last Name-->
@@ -63,7 +63,7 @@
                            Text="Last Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="Ivanov">
+                           Text="{Binding Path=LastName}">
                 </TextBlock>
             </StackPanel>
         </Grid>
@@ -95,7 +95,7 @@
                            Text="Department">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="C# Web Development">
+                           Text="{Binding Path=Department}">
                 </TextBlock>
             </StackPanel>
             <!--Courses-->
@@ -106,7 +106,7 @@
                            Text="Courses">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="3">
+                           Text="{Binding Path=Courses}">
                 </TextBlock>
             </StackPanel>
             <!--Students-->
@@ -117,7 +117,7 @@
                            Text="Students">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="134">
+                           Text="{Binding Path=Students}">
                 </TextBlock>
             </StackPanel>
         </Grid>

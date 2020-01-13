@@ -2,8 +2,7 @@
 {
     using Prism.Commands;
     using StudentSystem.Common;
-
-    using StudentSystem.Services.Services;
+    using StudentSystem.Services;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -15,7 +14,7 @@
 
         private DelegateCommand loginCommand;
 
-        private UserService service;
+        private UserService userService;
 
         #endregion
 
@@ -23,7 +22,7 @@
 
         public LoginViewModel()
         {
-            this.service = new UserService();
+            this.userService = new UserService();
         }
 
         #endregion

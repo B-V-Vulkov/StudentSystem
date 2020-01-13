@@ -4,10 +4,15 @@
     using Prism.Commands;
 
     using StudentSystem.Common;
+    using StudentSystem.Services;
 
     public class UserProfileViewModel : BaseViewModel
     {
         #region Declarations
+
+        private UserService userService;
+
+        private string userFullName;
 
         private string currentViewSource;
 
@@ -22,11 +27,26 @@
         public UserProfileViewModel()
         {
             this.CurrentViewSource = GetCurrentViewSource();
+
+            this.userService = new UserService();
+            this.UserFullName = userService.GetUserFullName(User.UserId);
         }
 
         #endregion
 
         #region Properties
+
+        public string UserFullName
+        {
+            get
+            {
+                return this.userFullName;
+            }
+            set
+            {
+                this.userFullName = value;
+            }
+        }
 
         public string CurrentViewSource
         {
@@ -93,8 +113,10 @@
             {
                 return ViewSource.ADMINISTRATOR_PROFILE_VIEW_SOURCE;
             }
-
-            throw new InvalidOperationException(ExceptionMessage.INVALID_USER_TYPE);
+            else
+            {
+                throw new InvalidOperationException(ExceptionMessage.INVALID_USER_TYPE);
+            }
         }
 
         private void ChangeView(string view)

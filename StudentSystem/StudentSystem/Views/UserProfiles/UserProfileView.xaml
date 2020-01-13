@@ -24,7 +24,7 @@
             <Button Command="{Binding Path=ChangeViewCommand}"
                     CommandParameter="GoToStudentProfile"
                     Style="{StaticResource ProfileNavigationButtonForStudent}"
-                    Content="Ivan Ivanov">
+                    Content="{Binding Path=UserFullName}">
             </Button>
             <!--Go To Student Courses-->
             <Button Command="{Binding Path=ChangeViewCommand}"
@@ -36,7 +36,7 @@
             <Button Command="{Binding Path=ChangeViewCommand}"
                     CommandParameter="GoToTeacherProfile"
                     Style="{StaticResource ProfileNavigationButtonForTeacher}"
-                    Content="Ivan Ivanov Petrov">
+                    Content="{Binding Path=UserFullName}">
             </Button>
             <!--Go To Teacher Courses-->
             <Button Command="{Binding Path=ChangeViewCommand}"

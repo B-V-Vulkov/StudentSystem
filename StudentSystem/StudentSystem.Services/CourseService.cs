@@ -12,9 +12,18 @@
     public class CourseService
     {
         #region Declarations
+
+        private StudentSystemDbContext context;
+
         #endregion
 
         #region Initializations
+
+        public CourseService()
+        {
+            this.context = new StudentSystemDbContext();
+        }
+
         #endregion
 
         #region Properties
@@ -26,21 +35,37 @@
         {
             List<TeacherCourse> course = new List<TeacherCourse>();
 
-            using (var context = new StudentSystemDbContext())
-            {
-                course = context.Courses
-                    .Where(x => x.Teacher.UserId == userId)
-                    .Select(x => new TeacherCourse()
-                    {
-                        CourseId = x.CourseId,
-                        Name = x.Name,
-                        StartDate = x.StartDate.ToString("MM/dd/yyyy"),
-                        EndDate = x.EndDate.ToString("MM/dd/yyyy"),
-                        ExamDate = x.ExamDate.ToString("MM/dd/yyyy"),
-                        StudentsEnrolled = x.StudentsEnrolled.Count,
-                    })
-                    .ToList();
-            }
+            course = context.Courses
+                .Where(x => x.Teacher.UserId == userId)
+                .Select(x => new TeacherCourse()
+                {
+                    CourseId = x.CourseId,
+                    Name = x.Name,
+                    StartDate = x.StartDate.ToString(STRING_DATE_FORMAT),
+                    EndDate = x.EndDate.ToString(STRING_DATE_FORMAT),
+                    ExamDate = x.ExamDate.ToString(STRING_DATE_FORMAT),
+                    StudentsEnrolled = x.StudentsEnrolled.Count,
+                })
+                .ToList();
+
+            return course;
+        }
+
+        public List<StudentCourse> GetStudentCourses(int userId)
+        {
+            List<StudentCourse> course;
+
+            course = context.StudentCourses
+                .Where(x => x.Student.UserId == userId)
+                .Select(x => new StudentCourse()
+                {
+                    Name = x.Course.Name,
+                    StartDate = x.Course.StartDate.ToString(STRING_DATE_FORMAT),
+                    EndDate = x.Course.EndDate.ToString(STRING_DATE_FORMAT),
+                    ExamDate = x.Course.ExamDate.ToString(STRING_DATE_FORMAT),
+                    Mark = x.Mark,
+                })
+                .ToList();
 
             return course;
         }

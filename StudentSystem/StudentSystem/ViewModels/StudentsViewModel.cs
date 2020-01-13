@@ -3,15 +3,15 @@
     using System.Collections.Generic;
 
     using Services.Models;
-    using Services.Services;
+    using StudentSystem.Services;
 
     public class StudentsViewModel
     {
         #region Declarations
 
-        private List<Student> students;
+        private StudentService studentService;
 
-        private StudentService service;
+        private List<Student> students;
 
         #endregion
 
@@ -19,8 +19,8 @@
 
         public StudentsViewModel()
         {
-            this.service = new StudentService();
-            this.Students = service.GetAllStudents();
+            this.studentService = new StudentService();
+            this.Students = studentService.GetAllStudents();
         }
 
         #endregion

@@ -9,45 +9,129 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <!--Title-->
+        <!--Personal Information Title-->
         <Border Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Margin="20"
                 BorderThickness="0 0 0 2"
-                BorderBrush="{StaticResource NavigationButtonText}">
+                BorderBrush="{StaticResource TitleBorder}">
             <TextBlock FontSize="25"
                        Foreground="{StaticResource DarkText}" 
                        Text="Personal Information">
             </TextBlock>
         </Border>
 
-        <Grid Grid.Row="1" 
-              Background="{StaticResource SecondaryLightBackgrounds}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
+        <!--Personal Information Content-->
+        <Grid Grid.Row="1"
+              Margin="20 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0"
-                       Grid.Row="0"
-                       Margin="20"
-                       Style="{StaticResource TableBody}"
-                       Text="First Name">
+            <!--First Name-->
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="First Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=FirstName}">
+                </TextBlock>
+            </StackPanel>
+            <!--Miggle Name-->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        Background="{StaticResource LightRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Middle Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=MiddleName}">
+                </TextBlock>
+            </StackPanel>
+            <!--Last Name-->
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Last Name">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=LastName}">
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <!--Education Information Title-->
+        <Border Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="20"
+                BorderThickness="0 0 0 2"
+                BorderBrush="{StaticResource TitleBorder}">
+            <TextBlock FontSize="25"
+                       Foreground="{StaticResource DarkText}" 
+                       Text="Education Information">
             </TextBlock>
-            <TextBlock Grid.Column="1"
-                       Grid.Row="0"
-                       Margin="20"
-                       FontSize="20"
-                       Style="{StaticResource TableBody}"
-                       Text="Ivan">
-            </TextBlock>
+        </Border>
+        <!--Education Information Content-->
+        <Grid Grid.Row="3"
+              Margin="20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!--Department-->
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Department">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=Department}">
+                </TextBlock>
+            </StackPanel>
+            <!--Student ID-->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        Background="{StaticResource LightRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Student ID">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=StudentId}">
+                </TextBlock>
+            </StackPanel>
+            <!--Courses-->
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        Background="{StaticResource DarkRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Courses">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=Courses}">
+                </TextBlock>
+            </StackPanel>
+            <!--AverageMark-->
+            <StackPanel Grid.Row="3"
+                        Orientation="Horizontal"
+                        Background="{StaticResource LightRowBackground}">
+                <TextBlock Style="{StaticResource PersonalInformationTitle}"
+                           Text="Average Mark">
+                </TextBlock>
+                <TextBlock Style="{StaticResource PersonalInformationData}"
+                           Text="{Binding Path=AverageMark}">
+                </TextBlock>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

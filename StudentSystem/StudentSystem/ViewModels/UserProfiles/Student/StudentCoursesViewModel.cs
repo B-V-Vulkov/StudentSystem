@@ -1,26 +1,32 @@
-﻿using Prism.Commands;
-using StudentSystem.Services.Models;
-using StudentSystem.Services.Services;
-using System.Collections.Generic;
-
-namespace StudentSystem.ViewModels.UserProfiles.Student
+﻿namespace StudentSystem.ViewModels.UserProfiles.Student
 {
+    using Services;
+    using StudentSystem.Services.Models;
+    using System.Collections.Generic;
+
     public class StudentCoursesViewModel : BaseViewModel
     {
-        private UserService service;
+        #region Declarations
 
-        private List<StudentCourses> courses;
+        private CourseService courseService;
 
-        private DelegateCommand command;
+        private List<StudentCourse> courses;
 
+        #endregion
+
+        #region Initializations
 
         public StudentCoursesViewModel()
         {
-            this.service = new UserService();
-            this.Courses = service.GetCourses();
+            this.courseService = new CourseService();
+            this.Courses = courseService.GetStudentCourses(7);
         }
 
-        public List<StudentCourses> Courses
+        #endregion
+
+        #region Properties
+
+        public List<StudentCourse> Courses
         {
             get
             {
@@ -29,27 +35,12 @@ namespace StudentSystem.ViewModels.UserProfiles.Student
             set
             {
                 this.courses = value;
-                NotifyPropertyChanged();
-            }
-            
-        }
-
-        public DelegateCommand Command
-        {
-            get
-            {
-                if (this.command == null)
-                {
-                    this.command = new DelegateCommand(Save);
-                }
-
-                return this.command;
             }
         }
 
-        private void Save()
-        {
-            service.Save(Courses);
-        }
+        #endregion
+
+        #region Methods
+        #endregion
     }
 }

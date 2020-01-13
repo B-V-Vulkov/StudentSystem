@@ -45,15 +45,14 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                Style="{StaticResource TableHeader}"
-                               Text="Fist Name">
+                               Text="First Name">
                     </TextBlock>
                     <TextBlock Grid.Column="1"
                                Style="{StaticResource TableHeader}"
@@ -65,7 +64,7 @@
                     </TextBlock>
                     <TextBlock Grid.Column="3"
                                Style="{StaticResource TableHeader}"
-                               Text="StudentId">
+                               Text="Student ID">
                     </TextBlock>
                     <TextBlock Grid.Column="4"
                                Style="{StaticResource TableHeader}"
@@ -73,13 +72,9 @@
                     </TextBlock>
                     <TextBlock Grid.Column="5"
                                Style="{StaticResource TableHeader}"
-                               Text="AverageResult">
+                               Text="Average Mark">
                     </TextBlock>
                     <TextBlock Grid.Column="6"
-                               Style="{StaticResource TableHeader}"
-                               Text="Credits">
-                    </TextBlock>
-                    <TextBlock Grid.Column="7"
                                Style="{StaticResource TableHeader}"
                                Text="Town">
                     </TextBlock>
@@ -100,14 +95,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=FistName}">
+                                           Text="{Binding Path=FirstName}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="1"
                                            Style="{StaticResource TableBody}" 
@@ -127,13 +121,9 @@
                                 </TextBlock>
                                 <TextBlock Grid.Column="5"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=AverageResult}">
+                                           Text="{Binding Path=AverageMark}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="6"
-                                           Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Credits}">
-                                </TextBlock>
-                                <TextBlock Grid.Column="7"
                                            Style="{StaticResource TableBody}" 
                                            Text="{Binding Path=Town}">
                                 </TextBlock>
@@ -148,7 +138,7 @@
                                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                                     <Setter TargetName="Row" 
                                             Property="Background" 
-                                            Value="{Binding DarkRowBackground}">
+                                            Value="{StaticResource DarkRowBackground}">
                                     </Setter>
                                 </Trigger>
                             </DataTemplate.Triggers>
