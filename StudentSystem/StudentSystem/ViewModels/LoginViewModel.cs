@@ -14,15 +14,13 @@
 
         private DelegateCommand loginCommand;
 
-        private UserService userService;
-
         #endregion
 
         #region Initializations
 
         public LoginViewModel()
         {
-            this.userService = new UserService();
+            
         }
 
         #endregion

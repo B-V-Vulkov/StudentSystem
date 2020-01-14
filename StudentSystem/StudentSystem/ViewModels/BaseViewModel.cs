@@ -1,6 +1,5 @@
 ﻿namespace StudentSystem.ViewModels
 {
-    using StudentSystem.Data;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 

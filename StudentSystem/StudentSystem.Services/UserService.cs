@@ -3,28 +3,23 @@
     using System.Linq;
 
     using Data;
+    using Contracts;
 
-    public class UserService
+    public class UserService : IUserService
     {
         public string GetUserFullName(int userId)
         {
-            string userFullName = string.Empty;
+            string name;
 
-            using (var context = new StudentSystemDbContext())
+            using (var data = new StudentSystemDbContext())
             {
-                var exportFullName = context.Users
-                    .Select(x => new
-                    {
-                        UserIdd = x.UserId,
-                        FirstName = x.FirstName,
-                        LastName = x.LastName,
-                    })
-                    .FirstOrDefault(x => x.UserIdd == userId);
-
-                userFullName = exportFullName.FirstName + " " + exportFullName.LastName;
+                name = data.Users
+                    .Where(x => x.UserId == userId)
+                    .Select(x => string.Concat(x.FirstName + " " + x.LastName))
+                    .ToString();
             }
 
-            return userFullName;
+            return name;
         }
     }
 }

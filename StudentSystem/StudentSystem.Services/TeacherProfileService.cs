@@ -4,25 +4,27 @@
 
     using Data;
     using Models;
+    using Contracts;
 
-    public class TeacherService
+    public class TeacherProfileService : ITeacherProfileService
     {
-        public TeacherProfile GetTeacherProfileInfo(int userId)
+        public TeacherProfileServiceModel GetTeacherProfile(int userId)
         {
-            TeacherProfile teacher;
+            TeacherProfileServiceModel teacher;
 
-            using (var context = new StudentSystemDbContext())
+            using (var data = new StudentSystemDbContext())
             {
-                teacher = context.Teachers
+                teacher = data.Teachers
                     .Where(x => x.UserId == userId)
-                    .Select(x => new TeacherProfile
+                    .Select(x => new TeacherProfileServiceModel()
                     {
                         FirstName = x.User.FirstName,
                         MiddleName = x.User.MiddleName,
                         LastName = x.User.LastName,
                         Department = x.User.Department.Name,
                         Courses = x.Courses.Count,
-                        Students = x.Courses.Select(s => s.StudentsEnrolled.Count).ToArray().Sum()
+                        Students = x.Courses.Select(s => s.StudentsEnrolled.Count)
+                                            .ToArray().Sum(),
                     })
                     .FirstOrDefault();
             }

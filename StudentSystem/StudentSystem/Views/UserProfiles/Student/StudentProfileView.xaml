@@ -41,7 +41,7 @@
                            Text="First Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=FirstName}">
+                           Text="{Binding Path=Student.FirstName}">
                 </TextBlock>
             </StackPanel>
             <!--Miggle Name-->
@@ -52,7 +52,7 @@
                            Text="Middle Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=MiddleName}">
+                           Text="{Binding Path=Student.MiddleName}">
                 </TextBlock>
             </StackPanel>
             <!--Last Name-->
@@ -63,7 +63,7 @@
                            Text="Last Name">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=LastName}">
+                           Text="{Binding Path=Student.LastName}">
                 </TextBlock>
             </StackPanel>
         </Grid>
@@ -96,7 +96,7 @@
                            Text="Department">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=Department}">
+                           Text="{Binding Path=Student.Department}">
                 </TextBlock>
             </StackPanel>
             <!--Student ID-->
@@ -107,7 +107,7 @@
                            Text="Student ID">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=StudentId}">
+                           Text="{Binding Path=Student.StudentId}">
                 </TextBlock>
             </StackPanel>
             <!--Courses-->
@@ -118,7 +118,7 @@
                            Text="Courses">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=Courses}">
+                           Text="{Binding Path=Student.Courses}">
                 </TextBlock>
             </StackPanel>
             <!--AverageMark-->
@@ -129,7 +129,7 @@
                            Text="Average Mark">
                 </TextBlock>
                 <TextBlock Style="{StaticResource PersonalInformationData}"
-                           Text="{Binding Path=AverageMark}">
+                           Text="{Binding Path=Student.AverageMark}">
                 </TextBlock>
             </StackPanel>
         </Grid>

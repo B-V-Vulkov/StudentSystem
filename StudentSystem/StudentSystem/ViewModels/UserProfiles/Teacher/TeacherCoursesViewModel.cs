@@ -1,24 +1,22 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Teacher
 {
-    using System.Linq;
     using System.Collections.Generic;
-    using Prism.Commands;
 
     using Common;
+    using Data;
     using Services;
     using Services.Models;
+    using Services.Contracts;
+    using Prism.Commands;
+    using System.Linq;
 
     public class TeacherCoursesViewModel : BaseViewModel
     {
         #region Declarations
 
-        private CourseService courseService;
+        private ITeacherCourseService courseService;
 
-        private StudentService studentService;
-
-        private List<TeacherStudent> students;
-
-        private List<TeacherCourse> courses;
+        private ITeacherStudentService studentService;
 
         private string selectedCourseName;
 
@@ -45,30 +43,9 @@
 
         #region Properties
 
-        public List<TeacherCourse> Courses
-        {
-            get
-            {
-                return this.courses;
-            }
-            set
-            {
-                this.courses = value;
-            }
-        }
+        public IEnumerable<TeacherCourseServiceModel> Courses { get; set; }
 
-        public List<TeacherStudent> Students
-        {
-            get
-            {
-                return this.students;
-            }
-            set
-            {
-                this.students = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public IList<TeacherStudentServiceModel> Students { get; set; }
 
         public string SelectedCourseName
         {
@@ -141,11 +118,8 @@
 
         private void Initialize()
         {
-            this.courseService = new CourseService();
-            this.studentService = new StudentService();
-
-            this.courses = new List<TeacherCourse>();
-            this.students = new List<TeacherStudent>();
+            this.courseService = new TeacherCourseService();
+            this.studentService = new TeacherStudentService();
 
             this.Courses = courseService
                 .GetTeacherCourses(User.UserId);
@@ -159,7 +133,7 @@
                     .GetTeacherStudents(initializedCourse.CourseId);
 
                 this.SelectedCourseName = courseService
-                    .GetCourseNameById(initializedCourse.CourseId);
+                    .GetCourseName(initializedCourse.CourseId);
 
                 this.selectedCourseId = initializedCourse.CourseId;
             }
@@ -176,7 +150,7 @@
                 .GetTeacherStudents((int)courseId);
 
             this.SelectedCourseName = courseService
-                .GetCourseNameById((int)courseId);
+                .GetCourseName((int)courseId);
 
             this.selectedCourseId = (int)courseId;
 

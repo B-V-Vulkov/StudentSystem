@@ -1,13 +1,16 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Student
 {
     using Common;
+    using Data;
     using Services;
+    using Services.Models;
+    using Services.Contracts;
 
     public class StudentProfileViewModel
     {
         #region Declarations
 
-        private StudentService studentService;
+        private IStudentProfileService profileService;
 
         #endregion
 
@@ -15,7 +18,6 @@
 
         public StudentProfileViewModel()
         {
-            this.studentService = new StudentService();
             Initialize();
         }
 
@@ -23,19 +25,7 @@
 
         #region Properties
 
-        public string FirstName { get; set; }
-
-        public string MiddleName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Department { get; set; }
-
-        public int StudentId { get; set; }
-
-        public int Courses { get; set; }
-
-        public double? AverageMark { get; set; }
+        public StudentProfileServiceModel Student { get; set; }
 
         #endregion
 
@@ -43,15 +33,11 @@
 
         private void Initialize()
         {
-            var student = studentService.GetStudentProfileInfo(User.UserId);
+            using var dbContext = new StudentSystemDbContext();
 
-            this.FirstName = student.FirstName;
-            this.MiddleName = student.MiddleName;
-            this.LastName = student.LastName;
-            this.Department = student.Department;
-            this.StudentId = student.StudentId;
-            this.Courses = student.Courses;
-            this.AverageMark = student.AverageMark;
+            this.profileService = new StudentProfileService(dbContext);
+
+            this.Student = profileService.GetStudentProfile(User.UserId);
         }
 
         #endregion

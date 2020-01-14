@@ -1,16 +1,18 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Student
 {
-    using Services;
-    using StudentSystem.Services.Models;
     using System.Collections.Generic;
+
+    using Common;
+    using Data;
+    using Services;
+    using Services.Models;
+    using Services.Contracts;
 
     public class StudentCoursesViewModel : BaseViewModel
     {
         #region Declarations
 
-        private CourseService courseService;
-
-        private List<StudentCourseServiceModel> courses;
+        private IStudentCourseService studentCourseService;
 
         #endregion
 
@@ -18,29 +20,28 @@
 
         public StudentCoursesViewModel()
         {
-            this.courseService = new CourseService();
-            this.Courses = courseService.GetStudentCourses(7);
+            Initialize();
         }
 
         #endregion
 
         #region Properties
 
-        public List<StudentCourseServiceModel> Courses
-        {
-            get
-            {
-                return this.courses;
-            }
-            set
-            {
-                this.courses = value;
-            }
-        }
+        public IEnumerable<StudentCourseServiceModel> Courses { get; set; }
 
         #endregion
 
         #region Methods
+
+        private void Initialize() 
+        {
+            using var dbContext = new StudentSystemDbContext();
+
+            this.studentCourseService = new StudentCourseService(dbContext);
+
+            this.Courses = studentCourseService.GetStudentCourses(User.UserId);
+        }
+
         #endregion
     }
 }

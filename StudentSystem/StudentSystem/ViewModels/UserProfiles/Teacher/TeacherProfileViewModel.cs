@@ -1,13 +1,16 @@
-﻿using StudentSystem.Common;
-using StudentSystem.Services;
-
-namespace StudentSystem.ViewModels.UserProfiles.Teacher
+﻿namespace StudentSystem.ViewModels.UserProfiles.Teacher
 {
+    using Common;
+    using Data;
+    using Services;
+    using Services.Models;
+    using Services.Contracts;
+
     public class TeacherProfileViewModel
     {
         #region Declarations
 
-        private TeacherService teacherService;
+        private ITeacherProfileService profileService;
 
         #endregion
 
@@ -15,7 +18,6 @@ namespace StudentSystem.ViewModels.UserProfiles.Teacher
 
         public TeacherProfileViewModel()
         {
-            this.teacherService = new TeacherService();
             Initialize();
         }
 
@@ -23,17 +25,7 @@ namespace StudentSystem.ViewModels.UserProfiles.Teacher
 
         #region Properties
 
-        public string FirstName { get; set; }
-
-        public string MiddleName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Department { get; set; }
-
-        public int Courses { get; set; }
-
-        public int Students { get; set; }
+        public TeacherProfileServiceModel Teacher { get; set; }
 
         #endregion
 
@@ -41,14 +33,11 @@ namespace StudentSystem.ViewModels.UserProfiles.Teacher
 
         private void Initialize()
         {
-            var teacher = teacherService.GetTeacherProfileInfo(User.UserId);
+            using var dbContext = new StudentSystemDbContext();
 
-            this.FirstName = teacher.FirstName;
-            this.MiddleName = teacher.MiddleName;
-            this.LastName = teacher.LastName;
-            this.Department = teacher.Department;
-            this.Courses = teacher.Courses;
-            this.Students = teacher.Students;
+            this.profileService = new TeacherProfileService(dbContext);
+
+            this.Teacher = profileService.GetTeacherProfile(User.UserId);
         }
 
         #endregion

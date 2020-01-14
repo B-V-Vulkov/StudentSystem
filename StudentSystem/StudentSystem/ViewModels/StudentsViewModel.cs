@@ -4,13 +4,14 @@
 
     using Data;
     using Services;
-    using Services.Models;
+    using Services.Contracts;
+    using StudentSystem.Services.Models;
 
     public class StudentsViewModel : BaseViewModel
     {
         #region Declarations
 
-        private StudentListingService studentService;
+        private IStudentService studentService;
 
         #endregion
 
@@ -25,7 +26,7 @@
 
         #region Properties
 
-        public IEnumerable<StudentCourseListingServiceModel> Students { get; set; }
+        public IEnumerable<StudentServiceModel> Students { get; set; }
 
         #endregion
 
@@ -35,7 +36,7 @@
         {
             using var dbContext = new StudentSystemDbContext();
 
-            this.studentService = new StudentListingService(dbContext);
+            this.studentService = new StudentService(dbContext);
 
             this.Students = studentService.GetStudents();
         }

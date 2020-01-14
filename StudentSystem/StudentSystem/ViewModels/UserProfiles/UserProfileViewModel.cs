@@ -3,16 +3,16 @@
     using System;
     using Prism.Commands;
 
-    using StudentSystem.Common;
-    using StudentSystem.Services;
+    using Common;
+    using Data;
+    using Services;
+    using Services.Contracts;
 
     public class UserProfileViewModel : BaseViewModel
     {
         #region Declarations
 
-        private UserService userService;
-
-        private string userFullName;
+        private IUserService userService;
 
         private string currentViewSource;
 
@@ -26,25 +26,20 @@
 
         public UserProfileViewModel()
         {
-            this.CurrentViewSource = GetCurrentViewSource();
-
-            this.userService = new UserService();
-            this.UserFullName = userService.GetUserFullName(User.UserId);
+            Initialize();
         }
 
         #endregion
 
         #region Properties
 
-        public string UserFullName
+        public string UserFullName { get; set; }
+
+        public UserType UserType
         {
             get
             {
-                return this.userFullName;
-            }
-            set
-            {
-                this.userFullName = value;
+                return User.UserType;
             }
         }
 
@@ -58,14 +53,6 @@
             {
                 this.currentViewSource = value;
                 NotifyPropertyChanged();
-            }
-        }
-
-        public UserType UserType
-        {
-            get
-            {
-                return User.UserType;
             }
         }
 
@@ -117,6 +104,17 @@
             {
                 throw new InvalidOperationException(ExceptionMessage.INVALID_USER_TYPE);
             }
+        }
+
+        private void Initialize()
+        {
+            using var dbContext = new StudentSystemDbContext();
+
+            this.userService = new UserService(dbContext);
+
+            this.UserFullName = userService.GetUserFullName(User.UserId);
+
+            this.CurrentViewSource = GetCurrentViewSource();
         }
 
         private void ChangeView(string view)
