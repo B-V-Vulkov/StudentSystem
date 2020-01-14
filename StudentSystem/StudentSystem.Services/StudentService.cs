@@ -13,38 +13,6 @@
     {
         #region Methods
 
-        public List<Student> GetAllStudents()
-        {
-            List<Student> students = new List<Student>();
-
-            using (var context = new StudentSystemDbContext())
-            {
-                students = context.Students
-                    .Select(x => new Student()
-                    {
-                        FirstName = x.User.FirstName,
-                        MiddleName = x.User.MiddleName,
-                        LastName = x.User.LastName,
-                        StudentId = x.StudentId,
-                        Department = x.User.Department.Name,
-                        AverageMark = x.CoursesEnrolled.Average(m => m.Mark),
-                        Town = x.User.Town.Name
-                    })
-                    .ToList();
-
-                foreach (var student in students)
-                {
-                    if (student.AverageMark != null)
-                    {
-                        student.AverageMark = Math.Round((double)student.AverageMark, 2);
-                    }
-                }
-            }
-
-            return students;
-        }
-
-
         public StudentProfile GetStudentProfileInfo(int userId)
         {
             StudentProfile student;

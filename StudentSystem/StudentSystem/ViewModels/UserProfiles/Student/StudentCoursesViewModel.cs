@@ -10,7 +10,7 @@
 
         private CourseService courseService;
 
-        private List<StudentCourse> courses;
+        private List<StudentCourseServiceModel> courses;
 
         #endregion
 
@@ -26,7 +26,7 @@
 
         #region Properties
 
-        public List<StudentCourse> Courses
+        public List<StudentCourseServiceModel> Courses
         {
             get
             {

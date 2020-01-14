@@ -2,16 +2,15 @@
 {
     using System.Collections.Generic;
 
+    using Data;
+    using Services;
     using Services.Models;
-    using StudentSystem.Services;
 
-    public class StudentsViewModel
+    public class StudentsViewModel : BaseViewModel
     {
         #region Declarations
 
-        private StudentService studentService;
-
-        private List<Student> students;
+        private StudentListingService studentService;
 
         #endregion
 
@@ -19,29 +18,28 @@
 
         public StudentsViewModel()
         {
-            this.studentService = new StudentService();
-            this.Students = studentService.GetAllStudents();
+            Initialize();
         }
 
         #endregion
 
         #region Properties
 
-        public List<Student> Students
-        {
-            get
-            {
-                return this.students;
-            }
-            set
-            {
-                this.students = value;
-            }
-        }
+        public IEnumerable<StudentCourseListingServiceModel> Students { get; set; }
 
         #endregion
 
         #region Methods
+
+        private void Initialize()
+        {
+            using var dbContext = new StudentSystemDbContext();
+
+            this.studentService = new StudentListingService(dbContext);
+
+            this.Students = studentService.GetStudents();
+        }
+
         #endregion
     }
 }

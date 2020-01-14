@@ -51,13 +51,13 @@
             return course;
         }
 
-        public List<StudentCourse> GetStudentCourses(int userId)
+        public List<StudentCourseServiceModel> GetStudentCourses(int userId)
         {
-            List<StudentCourse> course;
+            List<StudentCourseServiceModel> course;
 
             course = context.StudentCourses
                 .Where(x => x.Student.UserId == userId)
-                .Select(x => new StudentCourse()
+                .Select(x => new StudentCourseServiceModel()
                 {
                     Name = x.Course.Name,
                     StartDate = x.Course.StartDate.ToString(STRING_DATE_FORMAT),
