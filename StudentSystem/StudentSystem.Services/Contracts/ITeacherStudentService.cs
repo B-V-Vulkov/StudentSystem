@@ -1,6 +1,5 @@
 ﻿namespace StudentSystem.Services.Contracts
 {
-    using System;
     using System.Collections.Generic;
 
     using Models;

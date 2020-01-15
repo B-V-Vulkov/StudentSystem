@@ -241,13 +241,10 @@
                                            Style="{StaticResource TableBody}" 
                                            Text="{Binding Path=StudentId}">
                                 </TextBlock>
-                                <TextBox Grid.Column="4" BorderBrush="Transparent"
-                                         Background="Transparent"
-                                         Margin="15 0"
-                                         VerticalAlignment="Center"
-                                         FontSize="15"
-                                         BorderThickness="0"
-                                           Text="{Binding Path=Mark}">
+                                <TextBox Grid.Column="4"
+                                         Style="{StaticResource TableTextBox}"
+                                         Margin="15 1 1 0"
+                                         Text="{Binding Path=Mark}">
                                 </TextBox>
                             </Grid>
                             <DataTemplate.Triggers>

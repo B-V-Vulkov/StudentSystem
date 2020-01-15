@@ -155,7 +155,7 @@ INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) 
 INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('C# OOP', '2020-07-11', '2020-09-15', '2020-09-12', 1)
 INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('ASP.NET Core', '2020-09-07', '2020-11-13', '2020-11-12', 1)
 INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('Fundamentals WPF', '2019-12-12', '2020-03-07', '2020-03-01', 2)
-INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('Fundamentals Module Jave', '2019-12-12', '2020-03-07', '2020-03-01', 3)
+INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('Fundamentals Module Java', '2019-12-12', '2020-03-07', '2020-03-01', 3)
 INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('Fundamentals Module Pyton', '2019-12-12', '2020-03-07', '2020-03-01', 4)
 INSERT INTO [Courses] ([Name], [StartDate], [EndDate], [ExamDate], [TeacherId]) VALUES('Fundamentals Module JavaScript', '2019-12-12', '2020-03-07', '2020-03-01', 5)
 GO

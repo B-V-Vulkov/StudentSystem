@@ -9,4 +9,14 @@
         <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBackgrounds}"/>
         <Setter Property="FontSize" Value="12"/>
     </Style>
+
+    <Style x:Key="TableTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{StaticResource TableTextBoxBackground}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CaretBrush" Value="{StaticResource DarkText}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
 </ResourceDictionary>

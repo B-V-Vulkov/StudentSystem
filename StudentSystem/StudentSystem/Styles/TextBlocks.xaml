@@ -8,18 +8,34 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="15 2"/>
     </Style>
-    <Style x:Key="TableBody" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TableHeader}">
+    <Style x:Key="TableBody" 
+           TargetType="{x:Type TextBlock}" 
+           BasedOn="{StaticResource TableHeader}">
         <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
     </Style>
 
     <!--Personal Information TextBlock-->
-    <Style x:Key="PersonalInformationData" TargetType="{x:Type TextBlock}">
+    <Style x:Key="PersonalInformationData" 
+           TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="15"/>
     </Style>
-    <Style x:Key="PersonalInformationTitle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PersonalInformationData}">
+    <Style x:Key="PersonalInformationTitle" 
+           TargetType="{x:Type TextBlock}" 
+           BasedOn="{StaticResource PersonalInformationData}">
         <Setter Property="Width" Value="200"/>
         <Setter Property="Margin" Value="10 0 0 0"/>
+    </Style>
+
+    <!--Table Row Description-->
+    <Style x:Key="TabelRowDescription" 
+           TargetType="{x:Type TextBlock}" 
+           BasedOn="{StaticResource PersonalInformationTitle}">
+        <Setter Property="Width" Value="600"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="{StaticResource TitleBorder}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
 </ResourceDictionary>

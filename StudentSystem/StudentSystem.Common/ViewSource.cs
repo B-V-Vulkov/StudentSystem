@@ -18,12 +18,6 @@
 
         public const string ADMINISTRATOR_PROFILE_VIEW_SOURCE = "Administrator/AdministratorProfileView.xaml";
 
-        public static Dictionary<string, string> views = new Dictionary<string, string>()
-        {
-            {"HomeView", "HomeView.xaml" },
-            {"StudentsView", "StudentsView.xaml" },
-            {"TeachersView", "TeachersView.xaml" },
-            {"CoursesView", "CoursesView.xaml" },
-        };
+
     }
 }

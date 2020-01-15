@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StudentSystem.Views.TeachersView"
+﻿<UserControl x:Class="StudentSystem.Views.CoursesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,7 +23,7 @@
                 BorderBrush="{StaticResource NavigationButtonText}">
             <TextBlock FontSize="25"
                        Foreground="{StaticResource DarkText}" 
-                       Text="Teachers">
+                       Text="Courses">
             </TextBlock>
         </Border>
 
@@ -41,10 +41,9 @@
                     Background="{StaticResource SecondaryDarkBackgrounds}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -52,31 +51,27 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                Style="{StaticResource TableHeader}"
-                               Text="First Name">
+                               Text="Name">
                     </TextBlock>
                     <TextBlock Grid.Column="1"
                                Style="{StaticResource TableHeader}"
-                               Text="Middle Name">
+                               Text="Start Date">
                     </TextBlock>
                     <TextBlock Grid.Column="2"
                                Style="{StaticResource TableHeader}"
-                               Text="Last Name">
+                               Text="End Date">
                     </TextBlock>
                     <TextBlock Grid.Column="3"
                                Style="{StaticResource TableHeader}"
-                               Text="Department">
+                               Text="Exam Date">
                     </TextBlock>
                     <TextBlock Grid.Column="4"
                                Style="{StaticResource TableHeader}"
-                               Text="Courses">
+                               Text="Teacher">
                     </TextBlock>
                     <TextBlock Grid.Column="5"
                                Style="{StaticResource TableHeader}"
                                Text="Students">
-                    </TextBlock>
-                    <TextBlock Grid.Column="6"
-                               Style="{StaticResource TableHeader}"
-                               Text="Town">
                     </TextBlock>
                 </Grid>
             </Border>
@@ -84,48 +79,43 @@
             <ScrollViewer Grid.Row="1"
                           VerticalScrollBarVisibility="Visible"
                           HorizontalScrollBarVisibility="Disabled">
-                <ItemsControl ItemsSource="{Binding Path=Teachers}" 
+                <ItemsControl ItemsSource="{Binding Path=Courses}" 
                               AlternationCount="2">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid x:Name="Row"
                                   Background="Transparent">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=FirstName}">
+                                           Text="{Binding Path=Name}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="1"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=MiddleName}">
+                                           Text="{Binding Path=StartDate}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="2"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=LastName}">
+                                           Text="{Binding Path=EndDate}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="3"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Department}">
+                                           Text="{Binding Path=ExamDate}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="4"
                                            Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Courses}">
+                                           Text="{Binding Path=Teacher}">
                                 </TextBlock>
                                 <TextBlock Grid.Column="5"
                                            Style="{StaticResource TableBody}" 
                                            Text="{Binding Path=Students}">
-                                </TextBlock>
-                                <TextBlock Grid.Column="6"
-                                           Style="{StaticResource TableBody}" 
-                                           Text="{Binding Path=Town}">
                                 </TextBlock>
                             </Grid>
                             <DataTemplate.Triggers>

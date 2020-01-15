@@ -68,7 +68,7 @@
             <!--Teachers Button-->
             <Button x:Name="TeachersButton"
                     Command="{Binding Path=ChangeViewCommand}"
-                    CommandParameter="TeachersView"
+                    CommandParameter="GoToTeachers"
                     Style="{StaticResource NavigationButton}">
                 <Grid Width="160">
                     <Grid.ColumnDefinitions>
@@ -90,7 +90,7 @@
             <!--Courses Button-->
             <Button x:Name="CoursesButton"
                     Command="{Binding Path=ChangeViewCommand}"
-                    CommandParameter="CoursesView"
+                    CommandParameter="GoToCourses"
                     Style="{StaticResource NavigationButton}">
                 <Grid Width="160">
                     <Grid.ColumnDefinitions>

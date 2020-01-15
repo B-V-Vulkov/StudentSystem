@@ -108,9 +108,7 @@
 
         private void Initialize()
         {
-            using var dbContext = new StudentSystemDbContext();
-
-            this.userService = new UserService(dbContext);
+            this.userService = new UserService();
 
             this.UserFullName = userService.GetUserFullName(User.UserId);
 

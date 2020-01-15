@@ -4,12 +4,12 @@
 
     using ViewModels;
 
-    public partial class TeachersView : UserControl
+    public partial class CoursesView : UserControl
     {
-        public TeachersView()
+        public CoursesView()
         {
             InitializeComponent();
-            this.DataContext = new TeachersViewModel();
+            this.DataContext = new CoursesViewModel();
         }
     }
 }

@@ -2,7 +2,6 @@
 {
     using Prism.Commands;
     using StudentSystem.Common;
-    using StudentSystem.Services;
 
     public class LoginViewModel : BaseViewModel
     {
@@ -73,7 +72,7 @@
         private void ValidateUser()
         {
             //TODO: GetUser in UserService
-            User.Login(2, UserType.Teacher);
+            User.Login(1, UserType.Administrator);
         }
 
         #endregion

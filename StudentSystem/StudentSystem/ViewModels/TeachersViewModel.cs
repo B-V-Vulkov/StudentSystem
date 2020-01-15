@@ -6,17 +6,17 @@
     using Services.Models;
     using Services.Contracts;
 
-    public class StudentsViewModel : BaseViewModel
+    public class TeachersViewModel
     {
         #region Declarations
 
-        private IStudentService studentService;
+        private ITeacherService teacherService;
 
         #endregion
 
         #region Initializations
 
-        public StudentsViewModel()
+        public TeachersViewModel()
         {
             Initialize();
         }
@@ -25,7 +25,7 @@
 
         #region Properties
 
-        public IEnumerable<StudentServiceModel> Students { get; set; }
+        public IEnumerable<TeacherServiceModel> Teachers { get; set; }
 
         #endregion
 
@@ -33,11 +33,12 @@
 
         private void Initialize()
         {
-            this.studentService = new StudentService();
+            this.teacherService = new TeacherService();
 
-            this.Students = studentService.GetStudents();
+            this.Teachers = teacherService.GetTeachers();
         }
 
         #endregion
+
     }
 }

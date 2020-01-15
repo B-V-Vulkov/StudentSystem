@@ -1,7 +1,5 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Student
 {
-    using Common;
-    using Data;
     using Services;
     using Services.Models;
     using Services.Contracts;
@@ -33,9 +31,7 @@
 
         private void Initialize()
         {
-            using var dbContext = new StudentSystemDbContext();
-
-            this.profileService = new StudentProfileService(dbContext);
+            this.profileService = new StudentProfileService();
 
             this.Student = profileService.GetStudentProfile(User.UserId);
         }

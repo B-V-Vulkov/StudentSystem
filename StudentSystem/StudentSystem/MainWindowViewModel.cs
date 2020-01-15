@@ -4,7 +4,8 @@
     using System.Windows;
     using Prism.Commands;
 
-    using Common;
+    using static Common.WindowCommand;
+    using static Common.ExceptionMessage;
 
     public class MainWindowViewModel
     {
@@ -49,11 +50,11 @@
 
         private void ChangeWindowState(string command)
         {
-            if (command == WindowCommand.Minimize.ToString())
+            if (command == Minimize.ToString())
             {
                 this.window.WindowState = WindowState.Minimized;
             }
-            else if (command == WindowCommand.Maximize.ToString())
+            else if (command == Maximize.ToString())
             {
                 if (this.window.WindowState == WindowState.Maximized)
                 {
@@ -64,13 +65,13 @@
                     this.window.WindowState = WindowState.Maximized;
                 }
             }
-            else if (command == WindowCommand.Close.ToString())
+            else if (command == Close.ToString())
             {
                 this.window.Close();
             }
             else
             {
-                throw new InvalidOperationException(ExceptionMessage.INVALID_WINDOW_COMMAND_EXCEPTION);
+                throw new InvalidOperationException(INVALID_WINDOW_COMMAND_EXCEPTION);
             }
         }
 

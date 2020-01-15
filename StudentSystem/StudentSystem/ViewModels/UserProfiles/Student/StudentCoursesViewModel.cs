@@ -2,8 +2,6 @@
 {
     using System.Collections.Generic;
 
-    using Common;
-    using Data;
     using Services;
     using Services.Models;
     using Services.Contracts;
@@ -35,9 +33,7 @@
 
         private void Initialize() 
         {
-            using var dbContext = new StudentSystemDbContext();
-
-            this.studentCourseService = new StudentCourseService(dbContext);
+            this.studentCourseService = new StudentCourseService();
 
             this.Courses = studentCourseService.GetStudentCourses(User.UserId);
         }

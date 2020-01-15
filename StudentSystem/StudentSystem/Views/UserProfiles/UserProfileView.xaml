@@ -19,7 +19,6 @@
         <StackPanel Grid.Row="0"
                     Height="30"
                     Orientation="Horizontal">
-
             <!--Go To Student Profile-->
             <Button Command="{Binding Path=ChangeViewCommand}"
                     CommandParameter="GoToStudentProfile"
@@ -44,17 +43,29 @@
                     Style="{StaticResource ProfileNavigationButtonForTeacher}"
                     Content="Courses">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
-                    Content="Add Student">
+            <!--Go To Administrator Profile-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToAdministratorProfile"
+                    Style="{StaticResource ProfileNavigationButtonForAdministrator}"
+                    Content="{Binding Path=UserFullName}">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
-                    Content="Add Student">
+            <!--Go To Administrator Add Teacher-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToAdministratorTeachers"
+                    Style="{StaticResource ProfileNavigationButtonForAdministrator}"
+                    Content="Teachers">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
-                    Content="Add Student">
+            <!--Go To Administrator Add Student-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToAdministratorStudents"
+                    Style="{StaticResource ProfileNavigationButtonForAdministrator}"
+                    Content="Students">
             </Button>
-            <Button Style="{StaticResource ProfileNavigationButtonForAdministrator}"
-                    Content="Add Student">
+            <!--Go To Administrator Add Course-->
+            <Button Command="{Binding Path=ChangeViewCommand}"
+                    CommandParameter="GoToAdministratorCourses"
+                    Style="{StaticResource ProfileNavigationButtonForAdministrator}"
+                    Content="Courses">
             </Button>
             <Button Command="{Binding Path=LogoutCommand}"
                     Style="{StaticResource ProfileNavigationButtonLogout}"

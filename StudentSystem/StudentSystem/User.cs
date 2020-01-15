@@ -1,5 +1,7 @@
-﻿namespace StudentSystem.Common
+﻿namespace StudentSystem
 {
+    using Common;
+
     public static class User
     {
         #region Declarations

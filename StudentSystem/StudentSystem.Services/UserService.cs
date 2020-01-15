@@ -16,7 +16,7 @@
                 name = data.Users
                     .Where(x => x.UserId == userId)
                     .Select(x => string.Concat(x.FirstName + " " + x.LastName))
-                    .ToString();
+                    .FirstOrDefault();
             }
 
             return name;

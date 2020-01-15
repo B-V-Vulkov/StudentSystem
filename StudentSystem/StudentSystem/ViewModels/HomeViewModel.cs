@@ -1,6 +1,6 @@
 ﻿namespace StudentSystem.ViewModels
 {
-    using StudentSystem.Common;
+    using Common;
 
     public class HomeViewModel : BaseViewModel
     {

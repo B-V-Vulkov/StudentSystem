@@ -16,6 +16,9 @@
     <SolidColorBrush x:Key="WindowCommandButtonMouseOver">#3F3F41</SolidColorBrush>
     <SolidColorBrush x:Key="ProfileNavigationButtonMouseOver">#9024292E</SolidColorBrush>
     <SolidColorBrush x:Key="CloseWindowMouseOver">#8B0000</SolidColorBrush>
+    
+    <!--Text Box-->
+    <SolidColorBrush x:Key="TableTextBoxBackground">#2024292E</SolidColorBrush>
 
     <!--Texts-->
     <SolidColorBrush x:Key="DarkText">#24292E</SolidColorBrush>

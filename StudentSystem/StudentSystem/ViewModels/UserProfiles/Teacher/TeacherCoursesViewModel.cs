@@ -1,14 +1,12 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Teacher
 {
+    using System.Linq;
     using System.Collections.Generic;
+    using Prism.Commands;
 
-    using Common;
-    using Data;
     using Services;
     using Services.Models;
     using Services.Contracts;
-    using Prism.Commands;
-    using System.Linq;
 
     public class TeacherCoursesViewModel : BaseViewModel
     {
@@ -17,6 +15,10 @@
         private ITeacherCourseService courseService;
 
         private ITeacherStudentService studentService;
+
+        private IEnumerable<TeacherCourseServiceModel> courses;
+
+        private IList<TeacherStudentServiceModel> students;
 
         private string selectedCourseName;
 
@@ -43,9 +45,31 @@
 
         #region Properties
 
-        public IEnumerable<TeacherCourseServiceModel> Courses { get; set; }
+        public IEnumerable<TeacherCourseServiceModel> Courses
+        {
+            get
+            {
+                return this.courses;
+            }
+            set
+            {
+                this.courses = value;
+                NotifyPropertyChanged();
+            }
+        }
 
-        public IList<TeacherStudentServiceModel> Students { get; set; }
+        public IList<TeacherStudentServiceModel> Students
+        {
+            get
+            {
+                return this.students;
+            }
+            set
+            {
+                this.students = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public string SelectedCourseName
         {
@@ -146,13 +170,13 @@
                 return;
             }
 
+            this.selectedCourseId = (int)courseId;
+
             this.Students = studentService
-                .GetTeacherStudents((int)courseId);
+                .GetTeacherStudents(selectedCourseId);
 
             this.SelectedCourseName = courseService
-                .GetCourseName((int)courseId);
-
-            this.selectedCourseId = (int)courseId;
+                .GetCourseName(selectedCourseId);
 
             this.ExceptionMessage = string.Empty;
         }

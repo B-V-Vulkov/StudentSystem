@@ -8,6 +8,9 @@
     using Contracts;
     using System;
 
+    using static Common.GlobalConstants;
+    using static Common.ExceptionMessage;
+
     public class TeacherStudentService : ITeacherStudentService
     {
         public IList<TeacherStudentServiceModel> GetTeacherStudents(int courseId)
@@ -38,6 +41,13 @@
         {
             using (var data = new StudentSystemDbContext())
             {
+                bool isValid = ValidateStudentsMark(students);
+
+                if (!isValid)
+                {
+                    throw new InvalidOperationException(INVALID_STUDENT_MARK);
+                }
+
                 var exportData = data.StudentCourses
                     .Where(x => x.CourseId == courseId)
                     .ToArray();
@@ -54,6 +64,24 @@
 
                 data.SaveChanges();
             }
+        }
+
+        private bool ValidateStudentsMark(IEnumerable<TeacherStudentServiceModel> students)
+        {
+            bool isValid = true;
+
+            foreach (var student in students)
+            {
+                if (student.Mark != null
+                    && (student.Mark > MAX_STUDENT_MARK
+                    || student.Mark < MIN_STUDENT_MARK))
+                {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            return isValid;
         }
     }
 }
