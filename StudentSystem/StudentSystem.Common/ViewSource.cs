@@ -1,7 +1,5 @@
 ﻿namespace StudentSystem.Common
 {
-    using System.Collections.Generic;
-
     public static class ViewSource
     {
         public const string EMPTY_VIEW_SOURCE = "EmptyView.xaml";

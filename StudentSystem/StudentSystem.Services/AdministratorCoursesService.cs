@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Text;
     using System.Globalization;
 
     using Data;
@@ -11,6 +12,7 @@
 
     using static Common.GlobalConstants;
     using static Common.ExceptionMessage;
+    using static Common.DataValidations;
 
     public class AdministratorCoursesService : IAdministratorCoursesService
     {
@@ -26,7 +28,6 @@
                     StartDate = DateTime.ParseExact(inputCourseInfo.StartDate, STRING_DATE_FORMAT, CultureInfo.InvariantCulture),
                     EndDate = DateTime.ParseExact(inputCourseInfo.EndDate, STRING_DATE_FORMAT, CultureInfo.InvariantCulture),
                     ExamDate = DateTime.ParseExact(inputCourseInfo.ExamDate, STRING_DATE_FORMAT, CultureInfo.InvariantCulture),
-                    TeacherId = (int)inputCourseInfo.TeacherId,
                 };
 
                 data.Courses.Add(course);
@@ -36,59 +37,58 @@
 
         private void ValidateCourseInfo(AdministratorCourseServiceModel course)
         {
-            //TODO:
-            //  1 - Validate Course Name
-            //  2 - Validate Course ID
+            StringBuilder exceptionMessages = new StringBuilder();
 
-            bool isCourseExists = false;
-            bool isTeacherExists = false;
+            bool isValid = true;
 
             using (var data = new StudentSystemDbContext())
             {
-                isCourseExists = data.Courses
+                bool isCourseExists = data.Courses
                     .Any(x => x.Name == course.Name);
-                
-                isTeacherExists = data.Teachers
-                    .Any(x => x.TeacherId == course.TeacherId);
+
+                if (isCourseExists)
+                {
+                    exceptionMessages.AppendLine(string.Format(COURSE_EXISTS_EXCEPTION_MESSAGE, course.Name));
+                    isValid = false;
+                }
             }
 
-            if (isCourseExists)
+            if (course.Name == null || course.Name.Length < COURSE_NAME_MIN_LENGTH || course.Name.Length > COURSE_NAME_MAX_LENGTH)
             {
-                throw new InvalidOperationException(COURSE_EXISTS_EXCEPTION);
-            }
-            if (!isTeacherExists)
-            {
-                throw new InvalidOperationException(TEACHER_DOES_NOT_EXISTS_EXCEPTION);
+                exceptionMessages.AppendLine(INVALID_COURSE_NAME_LENGTH_EXCEPTION_MESSAGE);
+                isValid = false;
             }
 
             bool isValidStartDate = DateTime.TryParseExact(course.StartDate, 
-                STRING_DATE_FORMAT, 
-                CultureInfo.InvariantCulture, 
-                DateTimeStyles.None, out _);
+                STRING_DATE_FORMAT, CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
 
             if (!isValidStartDate)
             {
-                throw new InvalidOperationException(string.Format(INVALID_START_DATE_EXCEPTION, course.StartDate));
+                exceptionMessages.AppendLine(string.Format(INVALID_START_DATE_EXCEPTION_MESSAGE, course.StartDate));
+                isValid = false;
             }
 
             bool isValidEndDate = DateTime.TryParseExact(course.EndDate,
-                STRING_DATE_FORMAT,
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out _);
+               STRING_DATE_FORMAT, CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
 
             if (!isValidEndDate)
             {
-                throw new InvalidOperationException(string.Format(INVALID_END_DATE_EXCEPTION, course.EndDate));
+                exceptionMessages.AppendLine(string.Format(INVALID_END_DATE_EXCEPTION_MESSAGE, course.EndDate));
+                isValid = false;
             }
 
             bool isValidExamDate = DateTime.TryParseExact(course.ExamDate,
-                STRING_DATE_FORMAT,
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out _);
+                STRING_DATE_FORMAT, CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
 
             if (!isValidExamDate)
             {
-                throw new InvalidOperationException(string.Format(INVALID_EXAM_DATE_EXCEPTION_MESSAGE, course.ExamDate));
+                exceptionMessages.AppendLine(string.Format(INVALID_EXAM_DATE_EXCEPTION_MESSAGE, course.ExamDate));
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
+                throw new InvalidOperationException(exceptionMessages.ToString());
             }
         }
     }

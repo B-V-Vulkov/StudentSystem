@@ -1,6 +1,7 @@
 ﻿namespace StudentSystem.Common
 {
     using static GlobalConstants;
+    using static DataValidations;
 
     public static class ExceptionMessage
     {
@@ -18,6 +19,9 @@
 
         public static string COURSE_EXISTS_EXCEPTION_MESSAGE =
             "Course named \"{0}\" already exists in the database!";
+
+        public static string INVALID_COURSE_NAME_LENGTH_EXCEPTION_MESSAGE =
+            $"Course Name must be bitween {COURSE_NAME_MIN_LENGTH} and {COURSE_NAME_MAX_LENGTH} characters!";
 
         public static string TEACHER_DOES_NOT_EXISTS_EXCEPTION_MESSAGE =
             "Teacher with ID {0} does not exist in the database!";

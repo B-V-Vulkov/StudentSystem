@@ -68,7 +68,7 @@
                     Content="Courses">
             </Button>
             <Button Command="{Binding Path=LogoutCommand}"
-                    Style="{StaticResource ProfileNavigationButtonLogout}"
+                    Style="{StaticResource ProfileNavigationButtonAlwaysVisible}"
                     Content="Logout">
             </Button>
         </StackPanel>

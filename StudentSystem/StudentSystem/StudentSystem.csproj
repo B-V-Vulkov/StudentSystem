@@ -12,8 +12,9 @@
     <None Remove="Resources\ButtonIcons\Home.png" />
     <None Remove="Resources\ButtonIcons\Students.png" />
     <None Remove="Resources\ButtonIcons\Teachers.png" />
+    <None Remove="Resources\InvalidInput.png" />
     <None Remove="Resources\Logo.png" />
-    <None Remove="Resources\TestProfilePicture.jpg" />
+    <None Remove="Resources\ValidInput.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,8 +36,9 @@
     <Resource Include="Resources\ButtonIcons\Home.png" />
     <Resource Include="Resources\ButtonIcons\Students.png" />
     <Resource Include="Resources\ButtonIcons\Teachers.png" />
+    <Resource Include="Resources\InputValidationIcons\InvalidInput.png" />
     <Resource Include="Resources\StudentsIcons\Students.png" />
-    <Resource Include="Resources\TestProfilePicture.jpg" />
+    <Resource Include="Resources\InputValidationIcons\ValidInput.png" />
   </ItemGroup>
 
 </Project>

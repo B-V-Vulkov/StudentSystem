@@ -28,10 +28,19 @@
     <Compile Update="Views\TeachersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserProfiles\Administrator\AdministratorAddTeacherView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserProfiles\Administrator\AdministratorCoursesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserProfiles\Administrator\AdministratorProfileView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserProfiles\Administrator\AdministratorStudentsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserProfiles\Administrator\AdministratorTeachersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserProfiles\Student\StudentCoursesView.xaml.cs">
@@ -93,10 +102,19 @@
     <Page Update="Views\TeachersView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\UserProfiles\Administrator\AdministratorAddTeacherView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\UserProfiles\Administrator\AdministratorCoursesView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Administrator\AdministratorProfileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserProfiles\Administrator\AdministratorStudentsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserProfiles\Administrator\AdministratorTeachersView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Student\StudentCoursesView.xaml">

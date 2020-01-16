@@ -155,7 +155,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ProfileNavigationButtonLogout"
+    <Style x:Key="ProfileNavigationButtonAlwaysVisible"
            TargetType="Button"
            BasedOn="{StaticResource BaseProfileNavigationButton}">
         <Setter Property="Visibility" Value="Visible"/>

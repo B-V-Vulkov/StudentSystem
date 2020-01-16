@@ -61,7 +61,7 @@ namespace StudentSystem.Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("CourseId");
@@ -223,8 +223,7 @@ namespace StudentSystem.Data.Migrations
                     b.HasOne("StudentSystem.Data.Models.Teacher", "Teacher")
                         .WithMany("Courses")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("StudentSystem.Data.Models.Student", b =>

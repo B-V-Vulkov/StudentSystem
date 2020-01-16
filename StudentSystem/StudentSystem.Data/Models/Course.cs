@@ -28,8 +28,7 @@
         [Required]
         public DateTime ExamDate { get; set; }
 
-        [Required]
-        public int TeacherId { get; set; }
+        public int? TeacherId { get; set; }
         public Teacher Teacher { get; set; }
 
         public ICollection<StudentCourse> StudentsEnrolled { get; set; }

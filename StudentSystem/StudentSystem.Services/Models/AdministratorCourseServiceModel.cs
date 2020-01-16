@@ -9,7 +9,5 @@
         public string EndDate { get; set; }
 
         public string ExamDate { get; set; }
-
-        public int? TeacherId { get; set; }
     }
 }

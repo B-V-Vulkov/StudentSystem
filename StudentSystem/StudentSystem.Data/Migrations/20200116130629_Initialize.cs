@@ -131,7 +131,7 @@ namespace StudentSystem.Data.Migrations
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
                     ExamDate = table.Column<DateTime>(nullable: false),
-                    TeacherId = table.Column<int>(nullable: false)
+                    TeacherId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
