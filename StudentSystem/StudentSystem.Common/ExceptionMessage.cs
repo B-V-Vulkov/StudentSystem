@@ -16,19 +16,23 @@
         public static string INVALID_STUDENT_MARK =
             $"Student marks must be between {MIN_STUDENT_MARK} and {MAX_STUDENT_MARK}.";
 
-        public static string COURSE_EXISTS_EXCEPTION =
-            "Course wuth name {0} already exists in database.";
+        public static string COURSE_EXISTS_EXCEPTION_MESSAGE =
+            "Course named \"{0}\" already exists in the database!";
 
-        public static string TEACHER_DASNOT_EXISTS_EXCEPTION =
-            "Teacher with ID {0} dasn't exists in database.";
+        public static string TEACHER_DOES_NOT_EXISTS_EXCEPTION_MESSAGE =
+            "Teacher with ID {0} does not exist in the database!";
 
-        public static string INVALID_START_DATE_EXCEPTION =
-            "Course Start Date {0} is invalid!";
+        public static string INVALID_START_DATE_EXCEPTION_MESSAGE =
+            "Start date {0} is invalid! It must be in the format Day/Month/Year.";
 
-        public static string INVALID_END_DATE_EXCEPTION =
-            "Course End Date {0} is invalid!";
+        public static string INVALID_END_DATE_EXCEPTION_MESSAGE =
+            "End date {0} is invalid! It must be in the format Day/Month/Year.";
 
-        public static string INVALID_EXAM_DATE_EXCEPTION =
-            "Course Exam Date {0} is invalid!";
+        /// <summary>
+        /// Exam date {Exam Date} is invalid! It must be in the format Day/Month/Year.<br/>
+        /// Аccepts a parameter - Exam Date.
+        /// </summary>
+        public static string INVALID_EXAM_DATE_EXCEPTION_MESSAGE =
+            "Exam date {0} is invalid! It must be in the format Day/Month/Year.";
     }
 }

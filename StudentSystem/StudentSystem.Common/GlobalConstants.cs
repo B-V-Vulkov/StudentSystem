@@ -6,6 +6,6 @@
 
         public const double MIN_STUDENT_MARK = 2;
 
-        public const string STRING_DATE_FORMAT = "MM/dd/yyyy";
+        public const string STRING_DATE_FORMAT = "dd/MM/yyyy";
     }
 }

@@ -58,7 +58,7 @@
             }
             if (!isTeacherExists)
             {
-                throw new InvalidOperationException(TEACHER_DASNOT_EXISTS_EXCEPTION);
+                throw new InvalidOperationException(TEACHER_DOES_NOT_EXISTS_EXCEPTION);
             }
 
             bool isValidStartDate = DateTime.TryParseExact(course.StartDate, 
@@ -88,7 +88,7 @@
 
             if (!isValidExamDate)
             {
-                throw new InvalidOperationException(string.Format(INVALID_EXAM_DATE_EXCEPTION, course.ExamDate));
+                throw new InvalidOperationException(string.Format(INVALID_EXAM_DATE_EXCEPTION_MESSAGE, course.ExamDate));
             }
         }
     }
