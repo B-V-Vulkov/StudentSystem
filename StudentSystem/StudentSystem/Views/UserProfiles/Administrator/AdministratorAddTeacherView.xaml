@@ -30,7 +30,7 @@
                            Text="First Name">
                 </TextBlock>
                 <Image Style="{StaticResource ValidationField}"
-                       Source="{Binding Path=CourseNameValidationIconSource}">
+                       Source="{Binding Path=FirstNameValidationIconSource}">
                 </Image>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -57,7 +57,7 @@
                            Text="Middle Name">
                 </TextBlock>
                 <Image Style="{StaticResource ValidationField}"
-                       Source="{Binding Path=CourseNameValidationIconSource}">
+                       Source="{Binding Path=MiddleNameValidationIconSource}">
                 </Image>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -76,7 +76,7 @@
                     </TextBlock>
                 </Grid>
             </StackPanel>
-            <!--Middle Name-->
+            <!--Last Name-->
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
                         Background="{StaticResource DarkRowBackground}">
@@ -84,7 +84,7 @@
                            Text="Last Name">
                 </TextBlock>
                 <Image Style="{StaticResource ValidationField}"
-                       Source="{Binding Path=CourseNameValidationIconSource}">
+                       Source="{Binding Path=LastNameValidationIconSource}">
                 </Image>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -111,7 +111,7 @@
                            Text="Town">
                 </TextBlock>
                 <Image Style="{StaticResource ValidationField}"
-                       Source="{Binding Path=CourseNameValidationIconSource}">
+                       Source="{Binding Path=TownValidationIconSource}">
                 </Image>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -138,11 +138,15 @@
                            Text="Department">
                 </TextBlock>
 
-                <!--TODO ComboBox-->
-
+                <ComboBox ItemsSource="{Binding Path=Departments}"
+                          SelectedValue="{Binding Path=SelectedDepartment}"
+                          Width="300"
+                          Height="22"
+                          Foreground="{StaticResource DarkText}"
+                          Margin="18 0">
+                </ComboBox>
             </StackPanel>
         </Grid>
-        
         <!--Exception/Confirmation Message-->
         <TextBlock Grid.Row="1"
                    Margin="20"
@@ -151,7 +155,7 @@
                    FontSize="15"
                    Text="{Binding Path=ExceptionMessage}">
         </TextBlock>
-        <TextBlock Grid.Row="2" 
+        <TextBlock Grid.Row="1" 
                    Margin="20"
                    VerticalAlignment="Top"
                    Foreground="DarkGreen"

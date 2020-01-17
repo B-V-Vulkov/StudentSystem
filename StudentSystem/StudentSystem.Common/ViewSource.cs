@@ -15,7 +15,6 @@
         public const string TEACHER_COURSES_VIEW_SOURCE = "Teacher/TeacherCoursesView.xaml";
 
         public const string ADMINISTRATOR_PROFILE_VIEW_SOURCE = "Administrator/AdministratorProfileView.xaml";
-
-
+        public const string ADMINISTRATOR_ADD_TEACHER_VIEW_SOURCE = "AdministratorAddTeacherView.xaml";
     }
 }

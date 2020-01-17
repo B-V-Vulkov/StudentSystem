@@ -40,6 +40,9 @@
     <Compile Update="Views\UserProfiles\Administrator\AdministratorStudentsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserProfiles\Administrator\AdministratorTeacherCourseEnrollmentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserProfiles\Administrator\AdministratorTeachersView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,6 +115,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Administrator\AdministratorStudentsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserProfiles\Administrator\AdministratorTeacherCourseEnrollmentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserProfiles\Administrator\AdministratorTeachersView.xaml">

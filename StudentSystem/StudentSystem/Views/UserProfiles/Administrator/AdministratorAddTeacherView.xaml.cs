@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace StudentSystem.Views.UserProfiles.Administrator
+﻿namespace StudentSystem.Views.UserProfiles.Administrator
 {
-    /// <summary>
-    /// Interaction logic for AdministratorAddTeacherView.xaml
-    /// </summary>
+    using System.Windows.Controls;
+
+    using ViewModels.UserProfiles.Administrator;
+
     public partial class AdministratorAddTeacherView : UserControl
     {
         public AdministratorAddTeacherView()
         {
             InitializeComponent();
+            this.DataContext = new AdministratorAddTeacherViewModel();
         }
     }
 }

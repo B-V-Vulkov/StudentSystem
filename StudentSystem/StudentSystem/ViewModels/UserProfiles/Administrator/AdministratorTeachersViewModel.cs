@@ -4,6 +4,7 @@
     using StudentSystem.Common;
 
     using static Common.CommandDictionary;
+    using static Common.ViewSource;
 
     public class AdministratorTeachersViewModel : BaseViewModel
     {
@@ -16,6 +17,12 @@
         #endregion
 
         #region Initializations
+
+        public AdministratorTeachersViewModel()
+        {
+            Initialize();
+        }
+
         #endregion
 
         #region Properties
@@ -49,6 +56,11 @@
         #endregion
 
         #region Methods
+
+        private void Initialize()
+        {
+            this.CurrentViewSource = ADMINISTRATOR_ADD_TEACHER_VIEW_SOURCE;
+        }
 
         private void ChangeView(string view)
         {

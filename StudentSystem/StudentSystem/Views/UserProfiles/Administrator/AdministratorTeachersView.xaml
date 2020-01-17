@@ -33,7 +33,7 @@
                     Content="Add Teacher">
             </Button>
             <Button Command="{Binding Path=ChangeViewCommand}"
-                    CommandParameter="GoToAdministratorCourseEnrollment"
+                    CommandParameter="GoToAdministratorTeacherCourseEnrollment"
                     Style="{StaticResource ProfileNavigationButtonAlwaysVisible}"
                     Content="Course Enrollment">
             </Button>
