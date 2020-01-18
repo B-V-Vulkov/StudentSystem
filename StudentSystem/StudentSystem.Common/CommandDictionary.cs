@@ -25,7 +25,7 @@
             { "GoToAdministratorStudents", "Administrator/AdministratorStudentsView.xaml" },
             { "GoToAdministratorCourses", "Administrator/AdministratorCoursesView.xaml" },
             { "GoToAdministratorAddTeacher", "AdministratorAddTeacherView.xaml" },
-            { "GoToAdministratorCourseEnrollment", "AdministratorCourseEnrollmentView.xaml" },
+            { "GoToAdministratorTeacherCourseEnrollment", "AdministratorTeacherCourseEnrollmentView.xaml" },
         };
     }
 }

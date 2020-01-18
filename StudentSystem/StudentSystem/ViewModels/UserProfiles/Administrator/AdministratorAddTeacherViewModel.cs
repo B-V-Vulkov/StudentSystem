@@ -1,7 +1,7 @@
 ﻿namespace StudentSystem.ViewModels.UserProfiles.Administrator
 {
     using System;
-    using System.Globalization;
+    using System.Collections.Generic;
     using Prism.Commands;
 
     using Services;
@@ -10,30 +10,29 @@
 
     using static Common.IconsSource;
     using static Common.DataValidations;
-    using static Common.GlobalConstants;
     using static Common.ConfirmationMessages;
 
-    public class AdministratorCoursesViewModel : BaseViewModel
+    public class AdministratorAddTeacherViewModel : BaseViewModel
     {
         #region Declarations
 
-        private IAdministratorCoursesService administratorCoursesService;
+        private IAdministratorAddTeacherService administratorAddTeacherService;
 
-        private string courseName;
+        private string firstName;
 
-        private string startDate;
+        private string middleName;
 
-        private string endDate;
+        private string lastName;
 
-        private string examDate;
+        private string town;
 
-        private string courseNameValidationIconSource;
+        private string firstNameValidationIconSource;
 
-        private string startDateValidationIconSource;
+        private string middleNameValidationIconSource;
 
-        private string endDateValidationIconSource;
+        private string lastNameValidationIconSource;
 
-        private string examDateValidationIconSource;
+        private string townValidationIconSource;
 
         private string exceptionMessage;
 
@@ -47,7 +46,7 @@
 
         #region Initializations
 
-        public AdministratorCoursesViewModel()
+        public AdministratorAddTeacherViewModel()
         {
             Initialize();
         }
@@ -56,110 +55,114 @@
 
         #region Properties
 
-        public string CourseName
+        public IList<string> Departments { get; set; }
+
+        public string SelectedDepartment { get; set; }
+
+        public string FirstName
         {
             get
             {
-                return this.courseName;
+                return this.firstName;
             }
             set
             {
-                this.courseName = value;
-                ValidateCourseName(value);
+                this.firstName = value;
+                ValidateFirstName(value);
                 NotifyPropertyChanged();
             }
         }
 
-        public string StartDate
+        public string MiddleName
         {
             get
             {
-                return this.startDate;
+                return this.middleName;
             }
             set
             {
-                this.startDate = value;
-                ValidateStartDate(value);
+                this.middleName = value;
+                ValidateMiddleName(value);
                 NotifyPropertyChanged();
             }
         }
 
-        public string EndDate
+        public string LastName
         {
             get
             {
-                return this.endDate;
+                return this.lastName;
             }
             set
             {
-                this.endDate = value;
-                ValidateEndDate(value);
+                this.lastName = value;
+                ValidateLastName(value);
                 NotifyPropertyChanged();
             }
         }
 
-        public string ExamDate
+        public string Town
         {
             get
             {
-                return this.examDate;
+                return this.town;
             }
             set
             {
-                this.examDate = value;
-                ValidateExamDate(value);
+                this.town = value;
+                ValidateTownName(value);
                 NotifyPropertyChanged();
             }
         }
 
-        public string CourseNameValidationIconSource
+        public string FirstNameValidationIconSource
         {
             get
             {
-                return this.courseNameValidationIconSource;
+                return this.firstNameValidationIconSource;
             }
             set
             {
-                this.courseNameValidationIconSource = value;
+                this.firstNameValidationIconSource = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public string StartDateValidationIconSource
+        public string MiddleNameValidationIconSource
         {
             get
             {
-                return this.startDateValidationIconSource;
+                return this.middleNameValidationIconSource;
             }
             set
             {
-                this.startDateValidationIconSource = value;
+                this.middleNameValidationIconSource = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public string EndDateValidationIconSource
+        public string LastNameValidationIconSource
         {
             get
             {
-                return this.endDateValidationIconSource;
+                return this.lastNameValidationIconSource;
             }
             set
             {
-                this.endDateValidationIconSource = value;
+                this.lastNameValidationIconSource = value;
                 NotifyPropertyChanged();
             }
         }
 
-        public string ExamDateValidationIconSource
+        public string TownValidationIconSource
         {
             get
             {
-                return this.examDateValidationIconSource;
+                return this.townValidationIconSource;
             }
             set
             {
-                this.examDateValidationIconSource = value;
+                this.townValidationIconSource = value;
                 NotifyPropertyChanged();
             }
         }
@@ -222,23 +225,28 @@
 
         private void Initialize()
         {
-            this.administratorCoursesService = new AdministratorCoursesService();
+            this.administratorAddTeacherService = new AdministratorAddTeacherService();
+
+            this.Departments = administratorAddTeacherService.GetDepartments();
         }
 
         private void SaveChanges()
         {
-            var course = new AdministratorCourseServiceModel()
+            var teacher = new AdministratorAddTeacherServiceModel()
             {
-                Name = this.CourseName,
-                StartDate = this.StartDate,
-                EndDate = this.EndDate,
-                ExamDate = this.ExamDate,
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Town = this.Town,
+                Department = this.SelectedDepartment,
             };
 
             try
             {
-                this.administratorCoursesService.SaveCourse(course);
-                this.ConfirmationMessages = string.Format(SUCCESSFULLY_ADDED_COURSE, this.CourseName);
+                this.administratorAddTeacherService.AddTeacher(teacher);
+
+                this.ConfirmationMessages = string.Format(SUCCESSFULLY_ADDED_TEACHER, this.FirstName, this.MiddleName, this.LastName);
+
                 ResetViewFields();
             }
             catch (InvalidOperationException ioex)
@@ -256,75 +264,65 @@
 
         private void ResetViewFields()
         {
-            this.CourseName = String.Empty;
-            this.StartDate = String.Empty;
-            this.EndDate = String.Empty;
-            this.ExamDate = String.Empty;
+            this.FirstName = String.Empty;
+            this.MiddleName = String.Empty;
+            this.LastName = String.Empty;
+            this.Town = String.Empty;
 
-            this.CourseNameValidationIconSource = String.Empty;
-            this.StartDateValidationIconSource = String.Empty;
-            this.EndDateValidationIconSource = String.Empty;
-            this.ExamDateValidationIconSource = String.Empty;
+            this.FirstNameValidationIconSource = String.Empty;
+            this.MiddleNameValidationIconSource = String.Empty;
+            this.LastNameValidationIconSource = String.Empty;
+            this.TownValidationIconSource = String.Empty;
 
             this.ExceptionMessage = String.Empty;
         }
 
-        private void ValidateCourseName(string input)
+        private void ValidateFirstName(string input)
         {
-            if (input.Length < COURSE_NAME_MIN_LENGTH || input.Length > COURSE_NAME_MAX_LENGTH)
+            if (input.Length < USER_FIRST_NAME_MIN_LENGTH || input.Length > USER_FIRST_NAME_MAX_LENGTH)
             {
-                this.CourseNameValidationIconSource = INVALID_INPUT;
+                this.FirstNameValidationIconSource = INVALID_INPUT;
             }
             else
             {
-                this.CourseNameValidationIconSource = VALID_INPUT;
+                this.FirstNameValidationIconSource = VALID_INPUT;
             }
         }
 
-        private void ValidateStartDate(string date)
+        private void ValidateMiddleName(string input)
         {
-            if (!ValidateDate(date))
+            if (input.Length < USER_MIDDLE_NAME_MIN_LENGTH || input.Length > USER_MIDDLE_NAME_MAX_LENGTH)
             {
-                this.StartDateValidationIconSource = INVALID_INPUT;
+                this.MiddleNameValidationIconSource = INVALID_INPUT;
             }
             else
             {
-                this.StartDateValidationIconSource = VALID_INPUT;
+                this.MiddleNameValidationIconSource = VALID_INPUT;
             }
         }
 
-        private void ValidateEndDate(string date)
+        private void ValidateLastName(string input)
         {
-            if (!ValidateDate(date))
+            if (input.Length < USER_LAST_NAME_MIN_LENGTH || input.Length > USER_LAST_NAME_MAX_LENGTH)
             {
-                this.EndDateValidationIconSource = INVALID_INPUT;
+                this.LastNameValidationIconSource = INVALID_INPUT;
             }
             else
             {
-                this.EndDateValidationIconSource = VALID_INPUT;
+                this.LastNameValidationIconSource = VALID_INPUT;
             }
         }
 
-        private void ValidateExamDate(string date)
+        private void ValidateTownName(string input)
         {
-            if (!ValidateDate(date))
+            if (input.Length < TOWN_NAME_MIN_LENGTH || input.Length > TOWN_NAME_MAX_LENGTH)
             {
-                this.ExamDateValidationIconSource = INVALID_INPUT;
+                this.TownValidationIconSource = INVALID_INPUT;
             }
             else
             {
-                this.ExamDateValidationIconSource = VALID_INPUT;
+                this.TownValidationIconSource = VALID_INPUT;
             }
-        }
-
-        private bool ValidateDate(string date)
-        {
-            bool isValid = DateTime.TryParseExact(date,
-                STRING_DATE_FORMAT,
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out _);
-
-            return isValid;
         }
 
         #endregion
