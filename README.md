@@ -14,7 +14,7 @@ The application is built on three levels of access: Students, teachers and admin
 2. Teachers are able to see all the information about their courses and can evaluate their students.
 3. Administrators have the highest level of access. They are able to add courses, students, and teachers and subscribe them to courses.
 
-#### Member Loging View
+#### Member Logging View
 <img src="https://github.com/B-V-Vulkov/StudentSystem/blob/master/Tools/MemberLogin_PrintScreens.png">
 
 #### Courses View
